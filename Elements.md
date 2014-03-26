@@ -45,7 +45,7 @@ Teacher
 
 Student
 -------
-* View grades
+* View grades and alerts
 
 
 Classes
@@ -53,11 +53,16 @@ Classes
 
 Model
 -----
-* Person : Abstract class for each human being (student and teacher)
-* Student : child of the Person's class
-* Teacher : child of the Person's class
-* Grade
-* Module
+* Instances :
+    * Module        : id(int), name(string), year(int)
+    * Person        : id(int), name(string), email(string), password(email), type("TEACHER"/"STUDENT"), module_id(int)"speciality", year(int)
+    * Grade         : id(int), value(double), coefficient(double), person_id(int)"student", person_id(int)"teacher", module_id(int)
+    * Inscription   : id(int), person_id(int), module_id(int)
+    * Tutor         : id(int), person_id(int)"student", person_id(int)"tutor"
+    * Assistant     : id(int), person_id(int), module_id(int)
+    * Alerts        : id(int), person_id(int)"student", person_id(int)"tutor", date(date), message(string)
+
+* Collections for each instances, with search by id.
 
 View
 ----
@@ -77,16 +82,18 @@ Controller
         * assistant
         * inscriptions
 * model controller
-
+    * edit instances
+    * add instance in collections
 
 Database
 ========
 * tables :
     * module        : id(int), name(string), year(int)
-    * person        : id(int), name(string), email(string), password(email), type("TEACHER"/"STUDENT"), year(int)
-    * grade         : id(int), value(double), coefficient(double), person_id(int), module_id(int)
+    * person        : id(int), name(string), email(string), password(email), type("TEACHER"/"STUDENT"), module_id(int)"speciality", year(int)
+    * grade         : id(int), value(double), coefficient(double), person_id(int)"student", person_id(int)"teacher", module_id(int)
     * inscription   : id(int), person_id(int), module_id(int)
-    * tutor         : id(int), person_id(int), person_id(int)
+    * tutor         : id(int), person_id(int)"student", person_id(int)"tutor"
     * assistant     : id(int), person_id(int), module_id(int)
+    * alerts        : id(int), person_id(int)"student", person_id(int)"tutor", date(date), message(string)
 
 side note : year is the year in the school, so 1 for the first year, 2 for the second ... a teacher does not have a year.
