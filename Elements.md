@@ -56,8 +56,10 @@ Model
 * Instances :
     * Module        : id(int), name(string), year(int)
     * Person        : id(int), name(string), email(string), password(email), type("TEACHER"/"STUDENT"), module_id(int)"speciality", year(int)
-    * Grade         : id(int), value(double), coefficient(double), person_id(int)"student", person_id(int)"teacher", module_id(int)
+    * Student       : id(int), is_assistant(boolean)
+    * Teacher       : id(int), is_tutor(boolean)
     * Inscription   : id(int), person_id(int), module_id(int)
+    * Grade         : id(int), value(double), coefficient(double), person_id(int)"student", person_id(int)"teacher", module_id(int)
     * Tutor         : id(int), person_id(int)"student", person_id(int)"tutor"
     * Assistant     : id(int), person_id(int), module_id(int)
     * Alerts        : id(int), person_id(int)"student", person_id(int)"tutor", date(date), message(string)
