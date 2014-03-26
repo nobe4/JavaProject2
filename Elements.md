@@ -22,6 +22,7 @@ Operations
     * teacher
     * tutor
     * assistant
+    * inscriptions
 
 
 Interfaces
@@ -67,10 +68,25 @@ View
 Controller
 ----------
 * Database controllers :
-    * Add
-    * Modify
-    * Remove
+    * Add/Modify/Remove at the end
+        * module
+        * student
+        * grade
+        * teacher
+        * tutor
+        * assistant
+        * inscriptions
+* model controller
+
 
 Database
 ========
+* tables :
+    * module        : id(int), name(string), year(int)
+    * person        : id(int), name(string), email(string), password(email), type("TEACHER"/"STUDENT"), year(int)
+    * grade         : id(int), value(double), coefficient(double), person_id(int), module_id(int)
+    * inscription   : id(int), person_id(int), module_id(int)
+    * tutor         : id(int), person_id(int), person_id(int)
+    * assistant     : id(int), person_id(int), module_id(int)
 
+side note : year is the year in the school, so 1 for the first year, 2 for the second ... a teacher does not have a year.
