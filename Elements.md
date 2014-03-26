@@ -15,7 +15,7 @@ Requirements
 Operations
 ==========
 
-View/Add/Modify/Remove :
+* View/Add/Modify/Remove :
     * module
     * student
     * grade
@@ -29,22 +29,22 @@ Interfaces
 
 Login
 -----
-Login with name+id  and mdp (name id birthday)
+* Login with name+id  and mdp (name id birthday)
 
 
 Teacher
 -------
-View/Add/Remove/Modify :
+* View/Add/Remove/Modify :
     * a module
     * a student
     * a grade
     * an assistant
-Set himself as a tutor
-Show alerts
+* Set himself as a tutor
+* Show alerts
 
 Student
 -------
-View grades
+* View grades
 
 
 Classes
