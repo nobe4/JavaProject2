@@ -55,14 +55,14 @@ Model
 -----
 * Instances :
     * Module        : id(int), name(string), year(int)
-    * Person        : id(int), name(string), email(string), password(email), type("TEACHER"/"STUDENT"), module_id(int)"speciality", year(int)
-    * Student       : id(int), is_assistant(boolean)
+    * Person        : id(int), name(string), email(string), password(string), type("TEACHER"/"STUDENT"), module_id(int)"speciality"
+    * Student       : id(int), is_assistant(boolean), year(int)
     * Teacher       : id(int), is_tutor(boolean)
     * Inscription   : id(int), person_id(int), module_id(int)
     * Grade         : id(int), value(double), coefficient(double), person_id(int)"student", person_id(int)"teacher", module_id(int)
     * Tutor         : id(int), person_id(int)"student", person_id(int)"tutor"
     * Assistant     : id(int), person_id(int), module_id(int)
-    * Alerts        : id(int), person_id(int)"student", person_id(int)"tutor", date(date), message(string)
+    * Alerts        : id(int), person_id(int)"student", person_id(int)"tutor", module_id(int), message(string)
 
 * Collections for each instances, with search by id.
 
@@ -96,6 +96,6 @@ Database
     * inscription   : id(int), person_id(int), module_id(int)
     * tutor         : id(int), person_id(int)"student", person_id(int)"tutor"
     * assistant     : id(int), person_id(int), module_id(int)
-    * alerts        : id(int), person_id(int)"student", person_id(int)"tutor", date(date), message(string)
+    * alerts        : id(int), person_id(int)"student", person_id(int)"tutor", module_id(int), message(string)
 
 side note : year is the year in the school, so 1 for the first year, 2 for the second ... a teacher does not have a year.
