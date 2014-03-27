@@ -1,5 +1,5 @@
 import Controller.Collection_Controller;
-import Controller.Custom_Exceptions;
+import Controller.Custom_Exception;
 import Model.Student;
 
 /**
@@ -18,12 +18,13 @@ public class Main {
         System.out.println(Student.class); // class Model.Student
 
         Collection_Controller<String> cc = new Collection_Controller<String>();
-        cc.add(2, new String("foo"));
         try {
+            cc.add(2, new String("foo"));
+            cc.add(2, new String("foo"));
             System.out.println(cc.get(1).toString());
 
-        }catch (Custom_Exceptions custom_exceptions){
-            System.out.println(custom_exceptions.getMessage());
+        }catch (Custom_Exception custom_exception){
+            System.out.println(custom_exception.getMessage());
         }
 
         System.out.println("coucou");
