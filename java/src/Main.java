@@ -1,6 +1,7 @@
 import Controller.Collection_Controller;
 import Controller.Custom_Exception;
 import Model.Student;
+import Model.Teacher;
 
 /**
  * Created by padawan on 3/26/14.
@@ -17,12 +18,13 @@ public class Main {
         System.out.println(s.getClass()); // class Model.Student
         System.out.println(Student.class); // class Model.Student
 
-        Collection_Controller<String> cc = new Collection_Controller<String>();
+        Collection_Controller sc = new Collection_Controller(Student.class);
         try {
-            cc.add(2, new String("foo"));
-            cc.add(2, new String("foo"));
-            System.out.println(cc.get(1).toString());
-
+            sc.add(2, new Student());
+            sc.add(2, new Teacher());
+            //cc.add(2, new String("foo"));
+            System.out.println(sc.get(2).toString());
+            //sc.set(3,"coucou","coucou");
         }catch (Custom_Exception custom_exception){
             System.out.println(custom_exception.getMessage());
         }

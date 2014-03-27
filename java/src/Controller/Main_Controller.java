@@ -8,15 +8,26 @@ import Model.*;
 public class Main_Controller {
 
     // all controller for all entities in the program
-    private Collection_Controller<Alert> alerts = new Collection_Controller<Alert>();
-    private Collection_Controller<Assistant> assistants = new Collection_Controller<Assistant>();
-    private Collection_Controller<Grade> grades = new Collection_Controller<Grade>();
-    private Collection_Controller<Inscription> inscriptions = new Collection_Controller<Inscription>();
-    private Collection_Controller<Module> modules = new Collection_Controller<Module>();
-    private Collection_Controller<Person> persons = new Collection_Controller<Person>();
-    private Collection_Controller<Student> students = new Collection_Controller<Student>();
-    private Collection_Controller<Teacher> teachers = new Collection_Controller<Teacher>();
-    private Collection_Controller<Tutor> tutors = new Collection_Controller<Tutor>();
+    private Collection_Controller alerts = new Collection_Controller(Alert.class);
+    private Collection_Controller assistants = new Collection_Controller(Assistant.class);
+    private Collection_Controller grades = new Collection_Controller(Grade.class);
+    private Collection_Controller inscriptions = new Collection_Controller(Inscription.class);
+    private Collection_Controller modules = new Collection_Controller(Module.class);
+    private Collection_Controller persons = new Collection_Controller(Person.class);
+    private Collection_Controller students = new Collection_Controller(Student.class);
+    private Collection_Controller teachers = new Collection_Controller(Teacher.class);
+    private Collection_Controller tutors = new Collection_Controller(Tutor.class);
+
+
+
+   /* View/Add/Modify/Remove :
+            * module
+            * student
+            * grade
+            * teacher
+            * tutor
+            * assistant
+            * inscriptions */
 
 
 }

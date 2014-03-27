@@ -63,8 +63,8 @@ Model
     * Tutor         : id(int), person_id(int)"student", person_id(int)"tutor"
     * Assistant     : id(int), person_id(int), module_id(int)
     * Alerts        : id(int), person_id(int)"student", person_id(int)"tutor", module_id(int), message(string)
-
 * Collections for each instances, with search by id.
+* Interface Editable which is implemented by all classes
 
 View
 ----
