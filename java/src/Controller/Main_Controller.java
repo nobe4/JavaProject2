@@ -18,6 +18,24 @@ public class Main_Controller {
     private Collection_Controller teachers = new Collection_Controller(Teacher.class);
     private Collection_Controller tutors = new Collection_Controller(Tutor.class);
 
+    public int addStudent(String name, String email, String password, int speciality, boolean is_assistant, int year) throws Custom_Exception {
+        int id = 1;
+        Student s = new Student(id, name, email, password, speciality, is_assistant, year); // TODO set ID generation
+        students.add(id, s);
+        return id;
+    }
+
+    public Student getStudent(int id) throws Custom_Exception {
+        Student s = (Student) students.get(id);
+        return s;
+    }
+
+    public Student removeStudent(int id) throws Custom_Exception {
+        Student s = (Student) students.get(id);
+        students.remove(id);
+        return s;
+    }
+
 
 
    /* View/Add/Modify/Remove :

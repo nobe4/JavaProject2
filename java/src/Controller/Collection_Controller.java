@@ -11,16 +11,25 @@ public class Collection_Controller {
     // generic hashmap from example : http://stackoverflow.com/questions/6954509/why-i-cant-create-a-map-of-string-and-generic-object
     private HashMap<Integer, Model.Editable> params = new HashMap<Integer, Editable>();
     private Class type;
+    private int maxId = 0;
 
     public Collection_Controller(Class t) {
         this.type = t;
     }
 
     public boolean add(int id, Editable o) throws Custom_Exception {
-        if(o.getClass() != type) throw new Custom_Exception("Object not the rigth type");
+        if(o.getClass() != type) throw new Custom_Exception("Object not the right type");
         if(params.get(id) != null) throw new Custom_Exception("Id already in the map");
         this.params.put(id, o);
+        System.out.println("Successfully added new item in map");
         return true;
+    }
+
+    public Editable remove(int id) throws Custom_Exception {
+        Editable e = params.get(id);
+        if(params.get(id) == null) throw new Custom_Exception("Object not in the map");
+        this.params.remove(id);
+        return e;
     }
 
     public Editable get(int id) throws Custom_Exception {
@@ -30,7 +39,6 @@ public class Collection_Controller {
     }
 
     // multiple set definition
-
     public <Custom_Type> Editable set(int id, String key, Custom_Type value) throws Custom_Exception {
         Editable o = this.get(id);
         o.set(key, value);

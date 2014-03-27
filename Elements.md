@@ -54,15 +54,15 @@ Classes
 Model
 -----
 * Instances :
-    * Module        : id(int), name(string), year(int)
-    * Person        : id(int), name(string), email(string), password(string), type("TEACHER"/"STUDENT"), module_id(int)"speciality"
-    * Student       : id(int), is_assistant(boolean), year(int)
-    * Teacher       : id(int), is_tutor(boolean)
-    * Inscription   : id(int), person_id(int), module_id(int)
-    * Grade         : id(int), value(double), coefficient(double), person_id(int)"student", person_id(int)"teacher", module_id(int)
-    * Tutor         : id(int), person_id(int)"student", person_id(int)"tutor"
-    * Assistant     : id(int), person_id(int), module_id(int)
-    * Alerts        : id(int), person_id(int)"student", person_id(int)"tutor", module_id(int), message(string)
+    * Module        : name(string), year(int)
+    * Person        : name(string), email(string), password(string), type("TEACHER"/"STUDENT"), module_id(int)"speciality"
+    * Student       : is_assistant(boolean), year(int)
+    * Teacher       : is_tutor(boolean)
+    * Inscription   : person_id(int), module_id(int)
+    * Grade         : value(double), coefficient(double), person_id(int)"student", person_id(int)"teacher", module_id(int)
+    * Tutor         : person_id(int)"student", person_id(int)"tutor"
+    * Assistant     : person_id(int), module_id(int)
+    * Alerts        : person_id(int)"student", person_id(int)"tutor", module_id(int), message(string)
 * Collections for each instances, with search by id.
 * Interface Editable which is implemented by all classes
 

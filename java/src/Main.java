@@ -1,7 +1,5 @@
-import Controller.Collection_Controller;
 import Controller.Custom_Exception;
-import Model.Student;
-import Model.Teacher;
+import Controller.Main_Controller;
 
 /**
  * Created by padawan on 3/26/14.
@@ -14,19 +12,25 @@ public class Main {
     }
 
     public static void test_Collection_Controller(){
-        Student s = new Student();
+        /*Student s = new Student(1,"zer","zer","zer",2,true,2001);
         System.out.println(s.getClass()); // class Model.Student
         System.out.println(Student.class); // class Model.Student
 
         Collection_Controller sc = new Collection_Controller(Student.class);
         try {
-            sc.add(2, new Student());
-            sc.add(2, new Teacher());
-            //cc.add(2, new String("foo"));
+            sc.add(2, new Student(1,"zer","zer","zer",2,true,45));
+            sc.add(2, new Teacher(1,"zer","zer","zer",2,true));
             System.out.println(sc.get(2).toString());
-            //sc.set(3,"coucou","coucou");
         }catch (Custom_Exception custom_exception){
             System.out.println(custom_exception.getMessage());
+        }*/
+
+        Main_Controller c = new Main_Controller();
+        try {
+            int id = c.addStudent("Joe","Doe","ldqjk",2,true,2);
+            c.removeStudent(id);
+        } catch (Custom_Exception e) {
+            e.printStackTrace();
         }
 
         System.out.println("coucou");

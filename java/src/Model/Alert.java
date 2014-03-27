@@ -4,7 +4,6 @@ package Model;
  * Created by padawan on 3/26/14.
  */
 public class Alert implements Editable {
-    private int id;
     private int student; // must be a student id
     private int tutor; // must be a teacher id
     private int module; // must be a module id
@@ -16,20 +15,16 @@ public class Alert implements Editable {
         return false;
     }
 
-    public Alert(int id, int student, int tutor, int module, String message) {
-        this.id = id;
+    @Override
+    public boolean change(int id, Editable o) {
+        return false;
+    }
+
+    public Alert(int student, int tutor, int module, String message) {
         this.student = student;
         this.tutor = tutor;
         this.module = module;
         this.message = message;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public int getStudent() {

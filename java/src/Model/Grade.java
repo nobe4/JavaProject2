@@ -4,7 +4,6 @@ package Model;
  * Created by padawan on 3/26/14.
  */
 public class Grade implements Editable {
-    private int id;
     private double value;
     private double coef;
     private int student; // must be a student id
@@ -16,21 +15,17 @@ public class Grade implements Editable {
         return false;
     }
 
-    public Grade(int id, double value, double coef, int student, int teacher, int module) {
-        this.id = id;
+    @Override
+    public boolean change(int id, Editable o) {
+        return false;
+    }
+
+    public Grade(double value, double coef, int student, int teacher, int module) {
         this.value = value;
         this.coef = coef;
         this.student = student;
         this.teacher = teacher;
         this.module = module;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public double getValue() {

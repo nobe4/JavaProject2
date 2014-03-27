@@ -4,7 +4,7 @@ package Model;
  * Created by padawan on 3/26/14.
  */
 public class Teacher extends Person implements Editable {
-    private int id; // must be the same id as the person
+      // must be the same id as the person
     private boolean is_tutor;
 
     @Override
@@ -12,9 +12,13 @@ public class Teacher extends Person implements Editable {
         return false;
     }
 
-    public Teacher(int id, String name, String email, String password, PERSON_TYPE type, int speciality, boolean is_tutor) {
-        super(id, name, email, password, type, speciality);
-        id = id;
+    @Override
+    public boolean change(int id, Editable o) {
+        return false;
+    }
+
+    public Teacher( String name, String email, String password, int speciality, boolean is_tutor) {
+        super( name, email, password, PERSON_TYPE.TEACHER, speciality);
         this.is_tutor = is_tutor;
     }
 }

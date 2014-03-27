@@ -4,7 +4,7 @@ package Model;
  * Created by padawan on 3/26/14.
  */
 public class Module implements Editable {
-    private int id;
+
     private String name;
     private int year;
 
@@ -13,19 +13,18 @@ public class Module implements Editable {
         return false;
     }
 
-    public Module(int id, String name, int year) {
-        this.id = id;
+    @Override
+    public boolean change(int id, Editable o) {
+        return false;
+    }
+
+    public Module( String name, int year) {
+
         this.name = name;
         this.year = year;
     }
 
-    public int getId() {
-        return id;
-    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;

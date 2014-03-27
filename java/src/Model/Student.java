@@ -4,7 +4,7 @@ package Model;
  * Created by padawan on 3/26/14.
  */
 public class Student extends Person implements Editable {
-    private int id; // must be the same id as the person
+      // must be the same id as the person
     private boolean is_assistant;
     private int year;
 
@@ -14,20 +14,19 @@ public class Student extends Person implements Editable {
         return false;
     }
 
-    public Student(int id, String name, String email, String password, PERSON_TYPE type, int speciality, boolean is_assistant, int year) {
-        super(id, name, email, password, type, speciality);
-        id = id;
+    @Override
+    public boolean change(int id, Editable o) {
+        return false;
+    }
+
+    public Student( String name, String email, String password, int speciality, boolean is_assistant, int year) {
+        super(name, email, password, PERSON_TYPE.STUDENT, speciality);
+
         this.is_assistant = is_assistant;
         this.year = year;
     }
 
-    public int getId() {
-        return id;
-    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public boolean isIs_assistant() {
         return is_assistant;

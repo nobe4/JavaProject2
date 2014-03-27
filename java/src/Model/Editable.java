@@ -5,4 +5,5 @@ package Model;
  */
 public interface Editable {
     public <Custom_Type> boolean set(String key, Custom_Type value);
+    public boolean change(int id, Editable o);
 }

@@ -5,17 +5,22 @@ package Model;
  */
 public abstract class Person implements Editable {
 
+    @Override
+    public boolean change(int id, Editable o) {
+        return false;
+    }
+
     public enum PERSON_TYPE{TEACHER, STUDENT}
 
-    private int id;
+
     private String name;
     private String email;
     private String password;
     private PERSON_TYPE type;
     private int speciality; // must be a module id
 
-    protected Person(int id, String name, String email, String password, PERSON_TYPE type, int speciality) {
-        this.id = id;
+    protected Person( String name, String email, String password, PERSON_TYPE type, int speciality) {
+
         this.name = name;
         this.email = email;
         this.password = password;
@@ -23,13 +28,7 @@ public abstract class Person implements Editable {
         this.speciality = speciality;
     }
 
-    public int getId() {
-        return id;
-    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;

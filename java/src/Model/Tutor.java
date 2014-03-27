@@ -4,7 +4,7 @@ package Model;
  * Created by padawan on 3/26/14.
  */
 public class Tutor implements Editable {
-    private int id;
+
     private int student; // must be a student id
     private int teacher; // must be a teacher id
 
@@ -13,18 +13,15 @@ public class Tutor implements Editable {
         return false;
     }
 
-    public Tutor(int id, int student, int teacher) {
-        this.id = id;
+    @Override
+    public boolean change(int id, Editable o) {
+        return false;
+    }
+
+    public Tutor( int student, int teacher) {
+
         this.student = student;
         this.teacher = teacher;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public int getStudent() {
