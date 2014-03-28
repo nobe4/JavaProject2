@@ -1,5 +1,6 @@
 import Controller.Custom_Exception;
 import Controller.Main_Controller;
+import Model.Student;
 
 /**
  * Created by padawan on 3/26/14.
@@ -27,8 +28,10 @@ public class Main {
 
         Main_Controller c = new Main_Controller();
         try {
-            int id = c.addStudent("Joe","Doe","ldqjk",2,true,2);
-            c.removeStudent(id);
+            Student id = c.addStudent(-1, "Joe", "Doe", "ldqjk", 2, true, 2);
+            System.out.println(c.getStudent(0).toString());
+            c.removeStudent(0);
+            System.out.println(c.getStudent(0).toString());
         } catch (Custom_Exception e) {
             e.printStackTrace();
         }
