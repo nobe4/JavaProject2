@@ -7,12 +7,14 @@ import java.awt.*;
  * Created by padawan on 3/28/14.
  */
 public class Main_Page extends JFrame {
-    private Login_Page login;
+    private Login_Page t;
 
     public Main_Page() throws HeadlessException {
         this.setTitle("Login");
-        login = new Login_Page();
-        this.setContentPane(login);
+
+        t = new Login_Page();
+
+        this.setContentPane(t.getMainPanel());
         this.setSize(200,200);
         this.setVisible(true);
     }
