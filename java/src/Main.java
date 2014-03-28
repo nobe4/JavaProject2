@@ -1,7 +1,7 @@
 import Controller.Custom_Exception;
 import Controller.Main_Controller;
 import Model.Student;
-import View.Login_Page;
+import View.Main_Page;
 
 /**
  * Created by padawan on 3/26/14.
@@ -15,7 +15,7 @@ public class Main {
     }
 
     private static void test_UI_Login() {
-        Login_Page l = new Login_Page("Title :D");
+        Main_Page l = new Main_Page();
 
     }
 

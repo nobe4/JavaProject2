@@ -1,55 +1,49 @@
 package View;
 
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * Created by padawan on 3/26/14.
  */
-public class Login_Page extends JFrame{
-
-    private  JPanel mainPanel;
+public class Login_Page extends JPanel{
 
     private JButton loginButton;
     private JPasswordField passwordField;
     private JTextField loginField;
 
-    public Login_Page(String title) throws HeadlessException {
-        super(title);
-        setSize(200,200);
-        setVisible(true);
-
-
+    public Login_Page(){
         this.buildInterface();
         this.createListener();
     }
 
     public void buildInterface(){
         // create the main panel
-        mainPanel = new JPanel();
-        mainPanel.setLayout(new BoxLayout(mainPanel,BoxLayout.PAGE_AXIS));
-        this.add(mainPanel, BorderLayout.CENTER);
+        this.setLayout(new BoxLayout(this,BoxLayout.PAGE_AXIS));
 
         // create the components
         loginButton = new JButton("Login");
         passwordField = new JPasswordField();
         loginField = new JTextField();
 
-        mainPanel.add(loginField);
-        mainPanel.add(passwordField);
-        mainPanel.add(loginButton);
+        this.add(loginField);
+        this.add(passwordField);
+        this.add(loginButton);
 
     }
 
     public void createListener(){
-        this.addWindowListener(new WindowAdapter() {
+        loginButton.addActionListener(new ActionListener() {
             @Override
-            public void windowClosing(WindowEvent e) {
-                System.exit(0);
+            public void actionPerformed(ActionEvent e) {
+                checkLogin();
             }
         });
-         
+    }
+
+    public boolean checkLogin(){
+        System.out.println("check login");
+        return true;
     }
 }
