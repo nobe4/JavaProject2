@@ -20,6 +20,42 @@ public class Main_Controller {
 
     public Main_Controller() {}
 
+    public Collection_Controller getAlerts() {
+        return alerts;
+    }
+
+    public Collection_Controller getAssistants() {
+        return assistants;
+    }
+
+    public Collection_Controller getGrades() {
+        return grades;
+    }
+
+    public Collection_Controller getInscriptions() {
+        return inscriptions;
+    }
+
+    public Collection_Controller getModules() {
+        return modules;
+    }
+
+    public Collection_Controller getPersons() {
+        return persons;
+    }
+
+    public Collection_Controller getStudents() {
+        return students;
+    }
+
+    public Collection_Controller getTeachers() {
+        return teachers;
+    }
+
+    public Collection_Controller getTutors() {
+        return tutors;
+    }
+
     public Student addStudent(int id, String name, String email, String password, int speciality, boolean is_assistant, int year) throws Custom_Exception {
         Student s = new Student(name, email, password, speciality, is_assistant, year); // TODO set ID generation
         students.add(id, s);
