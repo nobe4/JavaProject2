@@ -1,5 +1,8 @@
 package View;
 
+import Controller.Collection_Controller;
+import Model.Student;
+
 import javax.swing.*;
 
 /**
@@ -21,66 +24,10 @@ public class Student_Page {
     }
 
     private void createUIComponents() {
-        String[] columnNames = {"Id", "Module", "Teacher", "Grade"};
-        Object[][] data = {
-                {2,3,4,5},
-                {2,3,4,5},
-                {2,3,4,5},
-                {2,3,4,5},
-                {2,3,4,5},
-                {2,3,4,5},
-                {2,3,4,5},
-                {2,3,4,5},
-                {2,3,4,5},
-                {2,3,4,5},
-                {2,3,4,5},
-                {2,3,4,5},
-                {2,3,4,5},
-                {2,3,4,5},
-                {2,3,4,5},
-                {2,3,4,5},
-                {2,3,4,5},
-                {2,3,4,5},
-                {2,3,4,5},
-                {2,3,4,5},
-                {2,3,4,5},
-                {2,3,4,5},
-                {2,3,4,5},
-                {2,3,4,5},
-                {2,3,4,5},
-                {2,3,4,5},
-                {2,3,4,5},
-                {2,3,4,5},
-                {2,3,4,5},
-                {2,3,4,5},
-                {2,3,4,5},
-                {2,3,4,5},
-                {2,3,4,5},
-                {2,3,4,5},
-                {2,3,4,5},
-                {2,3,4,5},
-                {2,3,4,5},
-                {2,3,4,5},
-                {2,3,4,5},
-                {2,3,4,5},
-                {2,3,4,5},
-                {2,3,4,5},
-                {2,3,4,5},
-                {2,3,4,5},
-                {2,3,4,5},
-                {2,3,4,5},
-                {2,3,4,5},
-                {2,3,4,5},
-                {2,3,4,5},
-                {2,3,4,5},
-                {2,3,4,5},
-                {2,3,4,5},
-                {2,3,4,5},
-                {2,3,4,5},
-                {2,3,4,5},
-                {2,3,4,5},
-                {2,3,4,5}
-        };
+        Collection_Controller cs = new Collection_Controller(Student.class);
+
+        String[] columnNames = cs.exportFields();
+        Object[][] data = {        };
         gradesTable = new JTable(data, columnNames);
         gradesTable.setFillsViewportHeight(true);
     }

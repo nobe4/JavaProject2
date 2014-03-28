@@ -2,6 +2,8 @@ package Controller;
 
 import Model.Editable;
 
+import java.lang.reflect.Field;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -53,4 +55,16 @@ public class Collection_Controller {
         o.set(key, value);
         return o;
     }
+
+    public String[] exportFields(){
+        ArrayList<String> fields = new ArrayList<String>();
+
+        Field[] declaredFields =  type.getDeclaredFields();
+        for (int i = 0; i < declaredFields.length; i++) {
+            fields.add(declaredFields[i].getName());
+        }
+
+        return fields.toArray(new String[fields.size()]);
+    }
+
 }
