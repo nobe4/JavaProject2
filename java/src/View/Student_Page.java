@@ -29,14 +29,14 @@ public class Student_Page {
 
 
     public void showGrades() {
-        String[] columnNames = {"moduleId", "coef", "value"};
+        String[] columnNames = gradesController.exportFields();
         Object[][] datas = gradesController.exportDatas(columnNames);
         gradesTable.setModel(new JTable(datas, columnNames).getModel());
         gradesTable.setFillsViewportHeight(true);
     }
 
     public void showAlerts() {
-        String[] columnNames = {"message"};
+        String[] columnNames = alertsController.exportFields();
         Object[][] datas = alertsController.exportDatas(columnNames);
         if (datas.length != 0) {
             alertTable.setModel(new JTable(datas, columnNames).getModel());

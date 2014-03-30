@@ -26,7 +26,7 @@ public class Database_Controller {
             mainController.addGrade(-1, 56, 0.4, 0, 0, 0);
             mainController.addGrade(-1, 77, 0.3, 0, 0, 0);
 
-            mainController.addAlert(-1, 0, 0, 0, "coucoucoucou");
+            mainController.addAlert(-1, 0, 0, 0, "coucoucocou");
 
 
         } catch (Custom_Exception e) {
