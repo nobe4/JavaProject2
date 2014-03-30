@@ -15,20 +15,22 @@ public class Collection_Controller {
     private Class type;
     static private int nextId = 0;
 
-    static public int getNextId(){return nextId;}
+    static public int getNextId() {
+        return nextId;
+    }
 
     public Collection_Controller(Class t) {
         this.type = t;
     }
 
     public boolean add(int id, JSObject o) throws Custom_Exception {
-        if(o.getClass() != type) throw new Custom_Exception("Object not the right type");
-        if(params.get(id) != null) throw new Custom_Exception("Id already in the map");
+        if (o.getClass() != type) throw new Custom_Exception("Object not the right type");
+        if (params.get(id) != null) throw new Custom_Exception("Id already in the map");
 
-        if(id == -1){
-            id = nextId ++;
-        }else{
-            if(id > nextId) nextId = id + 1;
+        if (id == -1) {
+            id = nextId++;
+        } else {
+            if (id > nextId) nextId = id + 1;
         }
 
         this.params.put(id, o);
@@ -38,14 +40,14 @@ public class Collection_Controller {
 
     public JSObject remove(int id) throws Custom_Exception {
         JSObject e = params.get(id);
-        if(params.get(id) == null) throw new Custom_Exception("Object not in the map");
+        if (params.get(id) == null) throw new Custom_Exception("Object not in the map");
         this.params.remove(id);
         return e;
     }
 
     public JSObject get(int id) throws Custom_Exception {
         JSObject o = params.get(id);
-        if(o == null) throw new Custom_Exception("Id not found in the map");
+        if (o == null) throw new Custom_Exception("Id not found in the map");
         return o;
     }
 
@@ -56,15 +58,14 @@ public class Collection_Controller {
         return o;
     }
 
-    public String[] exportFields(){
+    public String[] exportFields() {
         return params.entrySet().iterator().next().getValue().getFieldsName().toArray(new String[]{});
     }
 
-    public Object[][] exportDatas() {//ArrayList<String> askedField) {
+    public Object[][] exportDatas() {
         ArrayList<Object[]> datas = new ArrayList<Object[]>();
 
         for (Map.Entry<Integer, JSObject> entry : params.entrySet()) {
-            //System.out.println(entry.getValue().getValues().toArray());
             datas.add(entry.getValue().getValues().toArray());
         }
         return datas.toArray(new Object[][]{});

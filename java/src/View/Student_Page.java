@@ -13,18 +13,34 @@ public class Student_Page {
     private JTabbedPane tabbedPane1;
     private JPanel mainPanel;
     private JTable gradesTable;
-    private JList alertList;
+    private JTable alertTable;
 
     public Student_Page(Database_Controller databaseController) {
         this.alertsController = databaseController.getMainController().getAlerts();
         this.gradesController = databaseController.getMainController().getGrades();
 
-        System.out.println(this.alertsController);
-        String[] columnNames = gradesController.exportFields();
+        showAlerts();
+        showGrades();
+    }
+
+    public JPanel getMainPanel() {
+        return mainPanel;
+    }
+
+
+    public void showGrades() {
+        String[] columnNames = {"moduleId", "coef", "value"};
         Object[][] datas = gradesController.exportDatas(columnNames);
         gradesTable.setModel(new JTable(datas, columnNames).getModel());
         gradesTable.setFillsViewportHeight(true);
     }
 
-    public JPanel getMainPanel() {return mainPanel;}
+    public void showAlerts() {
+        String[] columnNames = {"message"};
+        Object[][] datas = alertsController.exportDatas(columnNames);
+        if (datas.length != 0) {
+            alertTable.setModel(new JTable(datas, columnNames).getModel());
+        }
+        alertTable.setFillsViewportHeight(true);
+    }
 }

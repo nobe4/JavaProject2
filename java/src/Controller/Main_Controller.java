@@ -15,7 +15,8 @@ public class Main_Controller {
     private Collection_Controller teachers = new Collection_Controller(Teacher.class);
     private Collection_Controller tutors = new Collection_Controller(Tutor.class);
 
-    public Main_Controller() {}
+    public Main_Controller() {
+    }
 
     public Collection_Controller getAlerts() {
         return alerts;
@@ -90,9 +91,9 @@ public class Main_Controller {
     }
 
     public Grade addGrade(int id, double value, double coef, int studentId, int teacherId, int moduleId) throws Custom_Exception {
-        if(students.get(studentId) == null) throw new Custom_Exception("There is no student with this id");
-        if(teachers.get(teacherId) == null) throw new Custom_Exception("There is no teacher with this id");
-        if(modules.get(moduleId) == null) throw new Custom_Exception("There is no module with this id");
+        if (students.get(studentId) == null) throw new Custom_Exception("There is no student with this id");
+        if (teachers.get(teacherId) == null) throw new Custom_Exception("There is no teacher with this id");
+        if (modules.get(moduleId) == null) throw new Custom_Exception("There is no module with this id");
         Grade g = new Grade(value, coef, studentId, teacherId, moduleId);
         grades.add(id, g);
         return g;
@@ -128,7 +129,7 @@ public class Main_Controller {
 
     public Tutor addTutor(int id, int studentId, int teacherId) throws Custom_Exception {
         Tutor t = new Tutor(studentId, teacherId);
-        tutors.add(id,t);
+        tutors.add(id, t);
         return t;
     }
 
@@ -177,6 +178,23 @@ public class Main_Controller {
         return a;
     }
 
+    public Alert addAlert(int id, int studentId, int tutorId, int moduleId, String message) throws Custom_Exception {
+        Alert a = new Alert(studentId, tutorId, moduleId, message);
+        alerts.add(id, a);
+        return a;
+    }
+
+    public Alert getAlert(int id) throws Custom_Exception {
+        Alert a = (Alert) alerts.get(id);
+        return a;
+    }
+
+    public Alert removeAlert(int id) throws Custom_Exception {
+        Alert a = (Alert) alerts.get(id);
+        alerts.remove(id);
+        return a;
+    }
+
    /* Get/Add/Remove :
             * module - DONE
             * student - DONE
@@ -185,6 +203,7 @@ public class Main_Controller {
             * tutor - DONE
             * assistant - DONE
             * inscriptions - DONE
+            * alert
     */
     // todo use the return of the remove method of Collection_Controller to return the object
 

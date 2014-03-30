@@ -21,14 +21,13 @@ public class Database_Controller {
 
             mainController.addModule(0, "Maths", 2);
 
-            System.out.println(mainController.getModule(0).toString());
-            System.out.println(mainController.getStudent(0).toString());
-            System.out.println(mainController.getTeacher(0).toString());
-
             mainController.addGrade(-1, 90, 0.1, 0, 0, 0);
             mainController.addGrade(-1, 23, 0.2, 0, 0, 0);
             mainController.addGrade(-1, 56, 0.4, 0, 0, 0);
             mainController.addGrade(-1, 77, 0.3, 0, 0, 0);
+
+            mainController.addAlert(-1, 0, 0, 0, "coucoucoucou");
+
 
         } catch (Custom_Exception e) {
             System.out.println(e.getMessage());
