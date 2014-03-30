@@ -1,7 +1,5 @@
-import Model.JSObject;
+import Model.Alert;
 import View.Main_Page;
-
-import java.util.ArrayList;
 
 /**
  * Created by padawan on 3/26/14.
@@ -20,19 +18,9 @@ public class Main {
     }
 
     public static void test_Collection_Controller(){
-        ArrayList<String> fields = new ArrayList<String>();
-        fields.add("aze");
-        fields.add("zer");
-        fields.add("ert");
-        fields.add("rty");
-        JSObject e = new JSObject(fields);
+        Alert e = new Alert();
         System.out.println(e.getFieldsName());
-
-        e.set("aze",2);
-        e.set("zer",3);
-        e.set("ert",4);
-        e.set("rty",5);
-
+        e.set("message",3);
         System.out.println(e.getValues());
 
     }

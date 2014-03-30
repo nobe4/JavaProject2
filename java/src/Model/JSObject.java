@@ -9,13 +9,15 @@ import java.util.HashMap;
 public class JSObject {
     private HashMap<String, Object> datas = new HashMap<String, Object>();
 
-    /**
-     * Constructe a default datas hashmap with fields name given in parameters
-     * @param fields the names of the fields
-     */
-    public JSObject(ArrayList<String> fields) {
-        for(int i  = 0; i < fields.size(); i ++){
-            datas.put(fields.get(i), null);
+    public JSObject(String... fields) {
+        for(int i  = 0; i < fields.length; i ++){
+            datas.put(fields[i], null);
+        }
+    }
+
+    public void setFields(String... fields) {
+        for(int i  = 0; i < fields.length; i ++){
+            datas.put(fields[i], null);
         }
     }
 
