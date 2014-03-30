@@ -6,7 +6,17 @@ public class Teacher extends Person {
     private boolean is_tutor;
 
     public Teacher() {
-        super("name", "email", "password", "type", "speciality", "is_tutor");
+        super("name", "email", "password", "type", "speciality", "isTutor");
         this.set("type", PERSON_TYPE.TEACHER);
+    }
+
+    public Teacher(String name, String email, String password, int speciality, boolean isTutor) {
+        super("name", "email", "password", "type", "speciality", "isTutor");
+        this.set("name", name);
+        this.set("email", email);
+        this.set("password", password);
+        this.set("type", PERSON_TYPE.TEACHER);
+        this.set("speciality", speciality);
+        this.set("isTutor", isTutor);
     }
 }
