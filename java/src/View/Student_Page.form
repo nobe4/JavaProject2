@@ -34,7 +34,7 @@
                 <properties/>
                 <border type="none"/>
                 <children>
-                  <component id="100aa" class="javax.swing.JTable" binding="gradesTable" custom-create="true">
+                  <component id="100aa" class="javax.swing.JTable" binding="gradesTable">
                     <constraints/>
                     <properties>
                       <autoCreateRowSorter value="true"/>

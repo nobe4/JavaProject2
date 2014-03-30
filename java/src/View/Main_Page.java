@@ -1,5 +1,7 @@
 package View;
 
+import Controller.Database_Controller;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.WindowAdapter;
@@ -12,20 +14,20 @@ public class Main_Page extends JFrame {
     private Login_Page login_page;
     private Student_Page student_page;
 
-    public Main_Page() throws HeadlessException {
+    public Main_Page(Database_Controller databaseController) throws HeadlessException {
         this.setTitle("Login");
 
         //login_page = new Login_Page();
-        student_page = new Student_Page();
+        student_page = new Student_Page(databaseController);
 
         this.setContentPane(student_page.getMainPanel());
-        this.setSize(500,500);
+        this.setSize(500, 500);
         this.setVisible(true);
 
         this.addListeners();
     }
 
-    public void addListeners(){
+    public void addListeners() {
         this.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {

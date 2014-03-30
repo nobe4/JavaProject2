@@ -1,12 +1,11 @@
 package Controller;
 
-/**
- * Created by padawan on 3/27/14.
- */
+import Model.*;
+
 public class Main_Controller {
 
     // all controller for all entities in the program
-   /* private Collection_Controller alerts = new Collection_Controller(Alert.class);
+    private Collection_Controller alerts = new Collection_Controller(Alert.class);
     private Collection_Controller assistants = new Collection_Controller(Assistant.class);
     private Collection_Controller grades = new Collection_Controller(Grade.class);
     private Collection_Controller inscriptions = new Collection_Controller(Inscription.class);
