@@ -15,7 +15,7 @@ public class Main_Page extends JFrame {
     public Main_Page() throws HeadlessException {
         this.setTitle("Login");
 
-        login_page = new Login_Page();
+        //login_page = new Login_Page();
         student_page = new Student_Page();
 
         this.setContentPane(student_page.getMainPanel());

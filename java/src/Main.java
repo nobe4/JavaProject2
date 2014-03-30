@@ -1,7 +1,7 @@
-import Controller.Custom_Exception;
-import Controller.Main_Controller;
-import Model.Student;
+import Model.JSObject;
 import View.Main_Page;
+
+import java.util.ArrayList;
 
 /**
  * Created by padawan on 3/26/14.
@@ -10,7 +10,7 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("Hello world !");
 
-//        test_Collection_Controller();
+        test_Collection_Controller();
         test_UI_Login();
     }
 
@@ -20,29 +20,20 @@ public class Main {
     }
 
     public static void test_Collection_Controller(){
-        /*Student s = new Student(1,"zer","zer","zer",2,true,2001);
-        System.out.println(s.getClass()); // class Model.Student
-        System.out.println(Student.class); // class Model.Student
+        ArrayList<String> fields = new ArrayList<String>();
+        fields.add("aze");
+        fields.add("zer");
+        fields.add("ert");
+        fields.add("rty");
+        JSObject e = new JSObject(fields);
+        System.out.println(e.getFieldsName());
 
-        Collection_Controller sc = new Collection_Controller(Student.class);
-        try {
-            sc.add(2, new Student(1,"zer","zer","zer",2,true,45));
-            sc.add(2, new Teacher(1,"zer","zer","zer",2,true));
-            System.out.println(sc.get(2).toString());
-        }catch (Custom_Exception custom_exception){
-            System.out.println(custom_exception.getMessage());
-        }*/
+        e.set("aze",2);
+        e.set("zer",3);
+        e.set("ert",4);
+        e.set("rty",5);
 
-        Main_Controller c = new Main_Controller();
-        try {
-            Student id = c.addStudent(-1, "Joe", "Doe", "ldqjk", 2, true, 2);
-            System.out.println(c.getStudent(0).toString());
-            c.removeStudent(0);
-            System.out.println(c.getStudent(0).toString());
-        } catch (Custom_Exception e) {
-            e.printStackTrace();
-        }
+        System.out.println(e.getValues());
 
-        System.out.println("coucou");
     }
 }

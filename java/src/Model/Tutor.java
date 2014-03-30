@@ -3,40 +3,8 @@ package Model;
 /**
  * Created by padawan on 3/26/14.
  */
-public class Tutor implements Editable {
+public class Tutor {
 
     private int student; // must be a student id
     private int teacher; // must be a teacher id
-
-    @Override
-    public <Custom_Type> boolean set(String key, Custom_Type value) {
-        return false;
-    }
-
-    @Override
-    public boolean change(int id, Editable o) {
-        return false;
-    }
-
-    public Tutor( int student, int teacher) {
-
-        this.student = student;
-        this.teacher = teacher;
-    }
-
-    public int getStudent() {
-        return student;
-    }
-
-    public void setStudent(int student) {
-        this.student = student;
-    }
-
-    public int getTeacher() {
-        return teacher;
-    }
-
-    public void setTeacher(int teacher) {
-        this.teacher = teacher;
-    }
 }

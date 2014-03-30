@@ -1,8 +1,5 @@
 package View;
 
-import Controller.Collection_Controller;
-import Model.Student;
-
 import javax.swing.*;
 
 /**
@@ -24,11 +21,23 @@ public class Student_Page {
     }
 
     private void createUIComponents() {
-        Collection_Controller cs = new Collection_Controller(Student.class);
+        //Collection_Controller cs = new Collection_Controller(Student.class);
+        /*try {
+            cs.add(0,new Student("ghj","gjkh","fghjk",2,true,2));
+            cs.add(1,new Student("sdf","gjkh","fghjk",2,true,2));
+            cs.add(2,new Student("sdf","gjkh","fghjk",2,true,2));
+            String[] columnNames ={"id","module","grade","teacher"};
+            Object[][] datas = cs.exportDatas(new ArrayList<String>(Arrays.asList(columnNames)));
+            gradesTable = new JTable(datas, columnNames);
+            //gradesTable.setFillsViewportHeight(true);
+        } catch (Custom_Exception e) {
+            e.printStackTrace();
+        }*/
 
-        String[] columnNames = cs.exportFields();
-        Object[][] data = {        };
-        gradesTable = new JTable(data, columnNames);
+
+        //String[] columnNames = cs.exportFields();
+        //Object[][] data = cs.exportDatas();
+        gradesTable = new JTable();//datas, columnNames);
         gradesTable.setFillsViewportHeight(true);
     }
 }
