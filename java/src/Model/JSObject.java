@@ -55,9 +55,11 @@ public class JSObject {
 
     public ArrayList<Object> getValues(ArrayList<String> askedField) {
         ArrayList<Object> values = new ArrayList<Object>();
-        for (Map.Entry<String, Object> entry : datas.entrySet()) {
-            if (askedField.contains(entry.getKey())) {
-                values.add(entry.getValue());
+        for (String field : askedField) {
+            for (Map.Entry<String, Object> entry : datas.entrySet()) {
+                if (entry.getKey() == field) {
+                    values.add(entry.getValue());
+                }
             }
         }
         return values;

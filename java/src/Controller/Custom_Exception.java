@@ -1,9 +1,7 @@
 package Controller;
 
-/**
- * Created by padawan on 3/26/14.
- */
-public class Custom_Exception extends Exception{
+
+public class Custom_Exception extends Exception {
     public Custom_Exception() {
     }
 

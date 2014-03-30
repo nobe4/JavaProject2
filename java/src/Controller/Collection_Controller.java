@@ -1,3 +1,4 @@
+
 package Controller;
 
 import Model.JSObject;
@@ -7,9 +8,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created by padawan on 3/26/14.
- */
+
 public class Collection_Controller {
     //generic hashmap from example : http://stackoverflow.com/questions/6954509/why-i-cant-create-a-map-of-string-and-generic-object
     private HashMap<Integer, JSObject> params = new HashMap<Integer, JSObject>();
