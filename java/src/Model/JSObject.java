@@ -2,6 +2,7 @@ package Model;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by padawan on 3/27/14.
@@ -9,15 +10,21 @@ import java.util.HashMap;
 public class JSObject {
     private HashMap<String, Object> datas = new HashMap<String, Object>();
 
+
     public JSObject(String... fields) {
         for(int i  = 0; i < fields.length; i ++){
             datas.put(fields[i], null);
         }
     }
 
-    public void setFields(String... fields) {
-        for(int i  = 0; i < fields.length; i ++){
-            datas.put(fields[i], null);
+    public JSObject(Object... fields) {
+        for (int i = 0; i < fields.length / 2; i++) {
+            datas.put(fields[i].toString(), fields[i + 1]);
+        }
+    }
+
+    public void setValues(Object... values) {
+        for (int i = 0; i < datas.size(); i++) {
         }
     }
 
@@ -42,6 +49,16 @@ public class JSObject {
         ArrayList<Object> values = new ArrayList<Object>();
         for(Object value : datas.values()){
             values.add(value);
+        }
+        return values;
+    }
+
+    public ArrayList<Object> getValues(ArrayList<String> askedField) {
+        ArrayList<Object> values = new ArrayList<Object>();
+        for (Map.Entry<String, Object> entry : datas.entrySet()) {
+            if (askedField.contains(entry.getKey())) {
+                values.add(entry.getValue());
+            }
         }
         return values;
     }

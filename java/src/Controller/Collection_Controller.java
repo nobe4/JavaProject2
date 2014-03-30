@@ -1,11 +1,18 @@
 package Controller;
 
+import Model.JSObject;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Created by padawan on 3/26/14.
  */
 public class Collection_Controller {
-   /* // generic hashmap from example : http://stackoverflow.com/questions/6954509/why-i-cant-create-a-map-of-string-and-generic-object
-    private HashMap<Integer, Model.JSObject> params = new HashMap<Integer, JSObject>();
+    //generic hashmap from example : http://stackoverflow.com/questions/6954509/why-i-cant-create-a-map-of-string-and-generic-object
+    private HashMap<Integer, JSObject> params = new HashMap<Integer, JSObject>();
     private Class type;
     static private int nextId = 0;
 
@@ -51,20 +58,29 @@ public class Collection_Controller {
     }
 
     public String[] exportFields(){
-        return params.entrySet().iterator().next().getValue().getAttributes();
+        return params.entrySet().iterator().next().getValue().getFieldsName().toArray(new String[]{});
+    }
+
+    public Object[][] exportDatas() {//ArrayList<String> askedField) {
+        ArrayList<Object[]> datas = new ArrayList<Object[]>();
+
+        for (Map.Entry<Integer, JSObject> entry : params.entrySet()) {
+            //System.out.println(entry.getValue().getValues().toArray());
+            datas.add(entry.getValue().getValues().toArray());
+        }
+        return datas.toArray(new Object[][]{});
     }
 
     public Object[][] exportDatas(ArrayList<String> askedField) {
-        ArrayList<ArrayList<String>> datas = new ArrayList<ArrayList<String>>();
+        ArrayList<Object[]> datas = new ArrayList<Object[]>();
 
-
-        Iterator itDatas = params.entrySet().iterator();
-        while (itDatas.hasNext()) {
-         //   String[] values = params.get(((Map.Entry) itDatas.next()).getKey()).getValues();
-       //     datas.add((ArrayList<String>) Arrays.asList(values));
-            itDatas.next();
+        for (Map.Entry<Integer, JSObject> entry : params.entrySet()) {
+            datas.add(entry.getValue().getValues(askedField).toArray());
         }
+        return datas.toArray(new Object[][]{});
+    }
 
-        return new Object[][]{datas.toArray()};
-    }*/
+    public Object[][] exportDatas(String[] askedField) {
+        return this.exportDatas(new ArrayList<String>(Arrays.asList(askedField)));
+    }
 }
