@@ -14,6 +14,7 @@ public class Main_Page extends JFrame {
     private Login_Page login_page;
     private Student_Page student_page;
     private Teacher_Page teacher_page;
+    private Edit_Page edit_page;
 
     public Main_Page(Database_Controller databaseController) throws HeadlessException {
         this.setTitle("Login");
@@ -21,8 +22,9 @@ public class Main_Page extends JFrame {
         //login_page = new Login_Page();
         //student_page = new Student_Page(databaseController);
         teacher_page = new Teacher_Page();
+        edit_page = new Edit_Page();
 
-        this.setContentPane(teacher_page.getMainPanel());
+        this.setContentPane(edit_page.getMainPanel());
         this.setSize(500, 500);
         this.setMinimumSize(new Dimension(400, 400));
         this.setVisible(true);
