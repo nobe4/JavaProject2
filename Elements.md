@@ -46,6 +46,7 @@ Teacher
 Student
 -------
 * View grades and alerts
+* Change the password
 
 
 Classes
