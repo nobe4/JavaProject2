@@ -33,15 +33,15 @@ public class Teacher_Page {
     private JTable modulesTable;
     private JTable gradeTables;
     private JTable tutorTable;
-    private JTable assistantsTable;
+    private JTable alertTable;
 
+    private JTable assistantsTable;
     private JButton newStudentButton;
     private JButton newTutorButton;
     private JButton newAssistantButton;
     private JButton newModuleButton;
-    private JButton newGradeButton;
 
-    private JTable alertTable;
+    private JButton newGradeButton;
 
     private JFrame editFrame;
     private Edit_Page edit_page = new Edit_Page();
@@ -54,7 +54,7 @@ public class Teacher_Page {
 
         // add the main controller to handle collections
         mainController = dc.getMainController();
-
+        fillTables();
 
         editFrame = new JFrame();
         editFrame.addWindowListener(new WindowAdapter() {
@@ -116,6 +116,53 @@ public class Teacher_Page {
 
 
     public void fillTables() {
+        fillAlertsTable();
+        fillAssistantsTable();
+        fillGradesTable();
+        fillModulesTable();
+        fillStudentsTable();
+        fillTutorsTable();
+    }
 
+    public void fillModulesTable() {
+        String[] columnNames = mainController.getModules().exportFields();
+        Object[][] datas = mainController.getModules().exportDatas(columnNames);
+        modulesTable.setModel(new JTable(datas, columnNames).getModel());
+        modulesTable.setFillsViewportHeight(true);
+    }
+
+    public void fillGradesTable() {
+        String[] columnNames = mainController.getGrades().exportFields();
+        Object[][] datas = mainController.getGrades().exportDatas(columnNames);
+        gradeTables.setModel(new JTable(datas, columnNames).getModel());
+        gradeTables.setFillsViewportHeight(true);
+    }
+
+    public void fillStudentsTable() {
+        String[] columnNames = mainController.getStudents().exportFields();
+        Object[][] datas = mainController.getStudents().exportDatas(columnNames);
+        studentsTable.setModel(new JTable(datas, columnNames).getModel());
+        studentsTable.setFillsViewportHeight(true);
+    }
+
+    public void fillTutorsTable() {
+        String[] columnNames = mainController.getTutors().exportFields();
+        Object[][] datas = mainController.getTutors().exportDatas(columnNames);
+        tutorTable.setModel(new JTable(datas, columnNames).getModel());
+        tutorTable.setFillsViewportHeight(true);
+    }
+
+    public void fillAssistantsTable() {
+        String[] columnNames = mainController.getAssistants().exportFields();
+        Object[][] datas = mainController.getAssistants().exportDatas(columnNames);
+        assistantsTable.setModel(new JTable(datas, columnNames).getModel());
+        assistantsTable.setFillsViewportHeight(true);
+    }
+
+    public void fillAlertsTable() {
+        String[] columnNames = mainController.getAlerts().exportFields();
+        Object[][] datas = mainController.getAlerts().exportDatas(columnNames);
+        alertTable.setModel(new JTable(datas, columnNames).getModel());
+        alertTable.setFillsViewportHeight(true);
     }
 }

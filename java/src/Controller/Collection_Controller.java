@@ -59,6 +59,7 @@ public class Collection_Controller {
     }
 
     public String[] exportFields() {
+        if (!params.entrySet().iterator().hasNext()) return new String[]{"Empty", "Set"};
         return params.entrySet().iterator().next().getValue().getFieldsName().toArray(new String[]{});
     }
 
@@ -75,8 +76,19 @@ public class Collection_Controller {
         ArrayList<Object[]> datas = new ArrayList<Object[]>();
 
         for (Map.Entry<Integer, JSObject> entry : params.entrySet()) {
+            System.out.println("new element");
             datas.add(entry.getValue().getValues(askedField).toArray());
         }
+        System.out.println(datas.size());
+        if (0 == datas.size()) {
+            Object[] a = new Object[askedField.size()];
+            for (int i = 0; i < askedField.size(); i++) {
+                a[i] = "Sample ";
+            }
+            datas.add(a);
+        }
+
+
         return datas.toArray(new Object[][]{});
     }
 
