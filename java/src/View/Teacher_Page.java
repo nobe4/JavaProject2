@@ -13,6 +13,7 @@ import java.awt.event.WindowEvent;
 
 public class Teacher_Page {
 
+
     private enum TAB {MODULE, STUDENT, GRADE, ASSISTANT, TUTOR}
 
     ;
@@ -42,9 +43,11 @@ public class Teacher_Page {
     private JButton newModuleButton;
 
     private JButton newGradeButton;
+    private JTable teachersTable;
+    private JButton newTeacherButton;
 
     private JFrame editFrame;
-    private Edit_Page edit_page = new Edit_Page();
+    private Edit_Page edit_page;
 
     // database attributes
     private Main_Controller mainController;
@@ -54,6 +57,7 @@ public class Teacher_Page {
 
         // add the main controller to handle collections
         mainController = dc.getMainController();
+        edit_page = new Edit_Page(dc);
         fillTables();
 
         editFrame = new JFrame();
@@ -75,43 +79,39 @@ public class Teacher_Page {
         newModuleButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                editFrame.setVisible(true);
-                edit_page.getMainPane().setSelectedIndex(0);
-                edit_page.setOptions(0, "Add", "Discard", -1);
+                callAction(0, true, -1);
             }
         });
         newStudentButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                editFrame.setVisible(true);
-                edit_page.getMainPane().setSelectedIndex(1);
-                edit_page.setOptions(1, "Add", "Discard", -1);
+                callAction(1, true, -1);
             }
         });
         newGradeButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                editFrame.setVisible(true);
-                edit_page.getMainPane().setSelectedIndex(2);
-                edit_page.setOptions(2, "Add", "Discard", -1);
+                callAction(2, true, -1);
             }
         });
         newAssistantButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                editFrame.setVisible(true);
-                edit_page.getMainPane().setSelectedIndex(3);
-                edit_page.setOptions(3, "Add", "Discard", -1);
+                callAction(3, true, -1);
             }
         });
         newTutorButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                editFrame.setVisible(true);
-                edit_page.getMainPane().setSelectedIndex(4);
-                edit_page.setOptions(4, "Add", "Discard", -1);
+                callAction(4, true, -1);
             }
         });
+    }
+
+    private void callAction(int tab, boolean add, int id) {
+        editFrame.setVisible(true);
+        edit_page.getMainPane().setSelectedIndex(tab);
+        edit_page.setAction(tab, add, id);
     }
 
     public void fillTables() {
@@ -120,6 +120,7 @@ public class Teacher_Page {
         fillGradesTable();
         fillModulesTable();
         fillStudentsTable();
+        fillTeachersTable();
         fillTutorsTable();
     }
 
@@ -144,6 +145,13 @@ public class Teacher_Page {
         studentsTable.setFillsViewportHeight(true);
     }
 
+    public void fillTeachersTable() {
+        String[] columnNames = mainController.getTeachers().exportFields();
+        Object[][] datas = mainController.getTeachers().exportDatas(columnNames);
+        teachersTable.setModel(new JTable(datas, columnNames).getModel());
+        teachersTable.setFillsViewportHeight(true);
+    }
+
     public void fillTutorsTable() {
         String[] columnNames = mainController.getTutors().exportFields();
         Object[][] datas = mainController.getTutors().exportDatas(columnNames);
@@ -163,5 +171,16 @@ public class Teacher_Page {
         Object[][] datas = mainController.getAlerts().exportDatas(columnNames);
         alertTable.setModel(new JTable(datas, columnNames).getModel());
         alertTable.setFillsViewportHeight(true);
+    }
+
+    private void createUIComponents() {
+        modulesTable = new JTable();
+        modulesTable.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                System.out.println(modulesTable.getValueAt(modulesTable.getSelectedRow(), 0));
+                callAction(0, false, (Integer) modulesTable.getValueAt(modulesTable.getSelectedRow(), 0));
+            }
+        });
     }
 }

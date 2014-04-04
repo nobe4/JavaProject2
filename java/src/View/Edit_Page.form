@@ -42,7 +42,7 @@
                     <properties/>
                     <border type="none" title="Teacher"/>
                     <children>
-                      <component id="37e55" class="javax.swing.JComboBox" binding="moduleTeacherChoice">
+                      <component id="37e55" class="View.CustomJComboBox" binding="moduleTeacherChoice" custom-create="true">
                         <constraints>
                           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
                         </constraints>
@@ -60,7 +60,7 @@
                     <properties/>
                     <border type="none" title="Year"/>
                     <children>
-                      <component id="820bb" class="javax.swing.JComboBox" binding="moduleYearChoice">
+                      <component id="820bb" class="View.CustomJComboBox" binding="moduleYearChoice">
                         <constraints>
                           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
                         </constraints>
@@ -463,7 +463,7 @@
                     <properties/>
                     <border type="none" title="Student"/>
                     <children>
-                      <component id="de7d9" class="javax.swing.JComboBox" binding="assistantStudentChoice">
+                      <component id="de7d9" class="View.CustomJComboBox" binding="assistantStudentChoice">
                         <constraints>
                           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
                         </constraints>
@@ -481,7 +481,7 @@
                     <properties/>
                     <border type="none" title="Teacher"/>
                     <children>
-                      <component id="189f8" class="javax.swing.JComboBox" binding="assistantTeacherChoice">
+                      <component id="189f8" class="View.CustomJComboBox" binding="assistantTeacherChoice">
                         <constraints>
                           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
                         </constraints>
@@ -555,7 +555,7 @@
                     <properties/>
                     <border type="none" title="Teacher"/>
                     <children>
-                      <component id="42bd5" class="javax.swing.JComboBox" binding="tutorTeacherChoice">
+                      <component id="42bd5" class="View.CustomJComboBox" binding="tutorTeacherChoice">
                         <constraints>
                           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
                         </constraints>
@@ -573,7 +573,7 @@
                     <properties/>
                     <border type="none" title="Module"/>
                     <children>
-                      <component id="5c21e" class="javax.swing.JComboBox" binding="tutorModuleChoice">
+                      <component id="5c21e" class="View.CustomJComboBox" binding="tutorModuleChoice">
                         <constraints>
                           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
                         </constraints>

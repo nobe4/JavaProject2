@@ -1,5 +1,9 @@
 package View;
 
+import Controller.Custom_Exception;
+import Controller.Database_Controller;
+import Model.Module;
+
 import javax.swing.*;
 
 /**
@@ -10,8 +14,8 @@ public class Edit_Page {
     private JPanel mainPanel;
 
     private JTextField moduleNameInput;
-    private JComboBox moduleTeacherChoice;
-    private JComboBox moduleYearChoice;
+    private CustomJComboBox moduleTeacherChoice;
+    private CustomJComboBox moduleYearChoice;
     private JButton moduleAddButton;
 
     private JTextField studentNameInput;
@@ -28,12 +32,12 @@ public class Edit_Page {
     private JComboBox gradeTypeChoice;
     private JButton gradeAddButton;
 
-    private JComboBox assistantStudentChoice;
-    private JComboBox assistantTeacherChoice;
+    private CustomJComboBox assistantStudentChoice;
+    private CustomJComboBox assistantTeacherChoice;
     private JButton assistantAddButton;
 
-    private JComboBox tutorTeacherChoice;
-    private JComboBox tutorModuleChoice;
+    private CustomJComboBox tutorTeacherChoice;
+    private CustomJComboBox tutorModuleChoice;
     private JButton tutorAddButton;
     private JButton moduleDiscardButton;
     private JButton studentDiscardButton;
@@ -51,6 +55,12 @@ public class Edit_Page {
     private JButton tutorDeleteButton;
     private JButton tutorChangeButton;
 
+    private Database_Controller databaseController;
+
+    public Edit_Page(Database_Controller databaseController) {
+        this.databaseController = databaseController;
+    }
+
     public JPanel getMainPanel() {
         return mainPanel;
     }
@@ -59,8 +69,8 @@ public class Edit_Page {
         return mainPane;
     }
 
-    public void setOptions(int tab, String text1, String text2, int id) {
-        if (text1.equals("Add")) {
+    public void setAction(int tab, boolean add, int id) {
+        if (add) {
             emptyFields(tab);
             switch (tab) {
                 case 0:
@@ -94,12 +104,45 @@ public class Edit_Page {
                     tutorDeleteButton.setVisible(false);
                     break;
             }
+        } else {
+            switch (tab) {
+                case 0:
+                    moduleAddButton.setVisible(false);
+                    moduleDiscardButton.setVisible(false);
+                    moduleChangeButton.setVisible(true);
+                    moduleDeleteButton.setVisible(true);
+                    fillModule(id);
+                    break;
+                case 1:
+                    studentAddButton.setVisible(false);
+                    studentDiscardButton.setVisible(false);
+                    studentChangeButton.setVisible(true);
+                    studentDeleteButton.setVisible(true);
+                    fillStudent(id);
+                    break;
+                case 2:
+                    gradeAddButton.setVisible(false);
+                    gradeDiscardButton.setVisible(false);
+                    gradeChangeButton.setVisible(true);
+                    gradeDeleteButton.setVisible(true);
+                    fillGrade(id);
+                    break;
+                case 3:
+                    assistantAddButton.setVisible(false);
+                    assistantDiscardButton.setVisible(false);
+                    assistantChangeButton.setVisible(true);
+                    assistantDeleteButton.setVisible(true);
+                    fillAssistant(id);
+                    break;
+                case 4:
+                    tutorAddButton.setVisible(false);
+                    tutorDiscardButton.setVisible(false);
+                    tutorChangeButton.setVisible(true);
+                    tutorDeleteButton.setVisible(true);
+                    fillTutor(id);
+                    break;
+            }
         }
-
-        else
-            fillFields(tab, id);
-
-
     }
 
     private void fillFields(int tab, int id) {
@@ -111,7 +154,14 @@ public class Edit_Page {
     }
 
     private void fillModule(int id) {
-
+        try {
+            Module m = this.databaseController.getMainController().getModule(id);
+            moduleNameInput.setText((String) m.get("name"));
+            moduleTeacherChoice.populate(this.databaseController.getMainController().getTeachers().exportDatas(new String[]{"id", "name"}), (Integer) m.get("teacherId"));
+            moduleYearChoice.setSelectedIndex((Integer) m.get("year") - 1);
+        } catch (Custom_Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private void fillStudent(int id) {
@@ -128,5 +178,9 @@ public class Edit_Page {
 
     private void fillTutor(int id) {
 
+    }
+
+    private void createUIComponents() {
+        moduleTeacherChoice = new CustomJComboBox();
     }
 }

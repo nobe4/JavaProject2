@@ -72,8 +72,8 @@ public class Main_Controller {
         return s;
     }
 
-    public Module addModule(int id, String name, int year) throws Custom_Exception {
-        Module m = new Module(name, year);
+    public Module addModule(int id, String name, int year, int teacherId) throws Custom_Exception {
+        Module m = new Module(name, year, teacherId);
         modules.add(id, m);
         return m;
     }

@@ -12,7 +12,7 @@ public class JSObject {
 
 
     public JSObject(String... fields) {
-        for(int i  = 0; i < fields.length; i ++){
+        for (int i = 0; i < fields.length; i++) {
             datas.put(fields[i], null);
         }
     }
@@ -28,38 +28,39 @@ public class JSObject {
         }
     }
 
-    public Object get(String field){
+    public Object get(String field) {
         return datas.get(field);
     }
 
-    public void set(String field, Object value){
+    public void set(String field, Object value) {
         datas.remove(field);
-        datas.put(field,value);
+        datas.put(field, value);
     }
 
-    public ArrayList<String> getFieldsName(){
+    public ArrayList<String> getFieldsName() {
         ArrayList<String> fieldsNames = new ArrayList<String>();
-        for(String key : datas.keySet()){
+        fieldsNames.add("id");
+        for (String key : datas.keySet()) {
             fieldsNames.add(key);
         }
         return fieldsNames;
     }
 
-    public ArrayList<Object> getValues(){
+    public ArrayList<Object> getValues(int id) {
         ArrayList<Object> values = new ArrayList<Object>();
-        for(Object value : datas.values()){
+        values.add(id);
+        for (Object value : datas.values()) {
             values.add(value);
         }
         return values;
     }
 
-    public ArrayList<Object> getValues(ArrayList<String> askedField) {
+    public ArrayList<Object> getValues(ArrayList<String> askedField, int id) {
         ArrayList<Object> values = new ArrayList<Object>();
         for (String field : askedField) {
+            if (field.equals("id")) values.add(id);
             for (Map.Entry<String, Object> entry : datas.entrySet()) {
-                if (entry.getKey() == field) {
-                    values.add(entry.getValue());
-                }
+                if (entry.getKey().equals(field)) values.add(entry.getValue());
             }
         }
         return values;

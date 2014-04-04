@@ -67,7 +67,7 @@ public class Collection_Controller {
         ArrayList<Object[]> datas = new ArrayList<Object[]>();
 
         for (Map.Entry<Integer, JSObject> entry : params.entrySet()) {
-            datas.add(entry.getValue().getValues().toArray());
+            datas.add(entry.getValue().getValues(entry.getKey()).toArray());
         }
         return datas.toArray(new Object[][]{});
     }
@@ -76,10 +76,9 @@ public class Collection_Controller {
         ArrayList<Object[]> datas = new ArrayList<Object[]>();
 
         for (Map.Entry<Integer, JSObject> entry : params.entrySet()) {
-            System.out.println("new element");
-            datas.add(entry.getValue().getValues(askedField).toArray());
+            datas.add(entry.getValue().getValues(askedField, entry.getKey()).toArray());
         }
-        System.out.println(datas.size());
+
         if (0 == datas.size()) {
             Object[] a = new Object[askedField.size()];
             for (int i = 0; i < askedField.size(); i++) {
