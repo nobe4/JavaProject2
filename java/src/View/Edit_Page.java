@@ -2,6 +2,7 @@ package View;
 
 import Controller.Custom_Exception;
 import Controller.Database_Controller;
+import Model.Grade;
 import Model.Module;
 import Model.Student;
 
@@ -27,7 +28,7 @@ public class Edit_Page {
     private JTextField studentMailInput;
     private JTextField studentPasswordInput;
     private CustomJComboBox studentSpecialityChoice;
-    private JComboBox studentYearChoice;
+    private CustomJComboBox studentYearChoice;
     private JButton studentAddButton;
     private JButton studentDiscardButton;
     private JButton studentDeleteButton;
@@ -35,9 +36,8 @@ public class Edit_Page {
 
     private JTextField gradeValueInput;
     private JTextField gradeCoefInput;
-    private JComboBox gradeStudentChoice;
-    private JComboBox gradeModuleChoice;
-    private JComboBox gradeTypeChoice;
+    private CustomJComboBox gradeStudentChoice;
+    private CustomJComboBox gradeModuleChoice;
     private JButton gradeAddButton;
     private JButton gradeDiscardButton;
     private JButton gradeChangeButton;
@@ -56,6 +56,7 @@ public class Edit_Page {
     private JButton tutorDeleteButton;
     private JButton tutorChangeButton;
     private JButton tutorDiscardButton;
+    private CustomJComboBox gradeTeacherChoice;
 
     private Database_Controller databaseController;
 
@@ -176,7 +177,22 @@ public class Edit_Page {
     }
 
     private void fillGrade(int id) {
-
+        try {
+            Grade g = this.databaseController.getMainController().getGrade(id);
+            gradeValueInput.setText(String.valueOf(g.get("value")));
+            gradeCoefInput.setText(String.valueOf(g.get("coef")));
+            gradeStudentChoice.populate(
+                    this.databaseController.getMainController().getStudents().exportDatas(new String[]{"id", "name"})
+                    , (Integer) g.get("studentId"));
+            gradeTeacherChoice.populate(
+                    this.databaseController.getMainController().getTeachers().exportDatas(new String[]{"id", "name"})
+                    , (Integer) g.get("teacherId"));
+            gradeModuleChoice.populate(
+                    this.databaseController.getMainController().getModules().exportDatas(new String[]{"id", "name"})
+                    , (Integer) g.get("moduleId"));
+        } catch (Custom_Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private void fillAssistant(int id) {

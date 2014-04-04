@@ -179,7 +179,7 @@
                 <properties/>
                 <border type="none"/>
                 <children>
-                  <component id="f1d6a" class="javax.swing.JTable" binding="gradeTables">
+                  <component id="f1d6a" class="javax.swing.JTable" binding="gradesTable" custom-create="true">
                     <constraints/>
                     <properties/>
                   </component>

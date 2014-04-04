@@ -32,7 +32,7 @@ public class Teacher_Page {
 
     private JTable studentsTable;
     private JTable modulesTable;
-    private JTable gradeTables;
+    private JTable gradesTable;
     private JTable tutorTable;
     private JTable alertTable;
 
@@ -134,8 +134,8 @@ public class Teacher_Page {
     public void fillGradesTable() {
         String[] columnNames = mainController.getGrades().exportFields();
         Object[][] datas = mainController.getGrades().exportDatas(columnNames);
-        gradeTables.setModel(new JTable(datas, columnNames).getModel());
-        gradeTables.setFillsViewportHeight(true);
+        gradesTable.setModel(new JTable(datas, columnNames).getModel());
+        gradesTable.setFillsViewportHeight(true);
     }
 
     public void fillStudentsTable() {
@@ -189,6 +189,15 @@ public class Teacher_Page {
             public void mouseClicked(MouseEvent e) {
                 System.out.println(studentsTable.getValueAt(studentsTable.getSelectedRow(), 0));
                 callAction(1, false, (Integer) studentsTable.getValueAt(studentsTable.getSelectedRow(), 0));
+            }
+        });
+
+        gradesTable = new JTable();
+        gradesTable.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                System.out.println(gradesTable.getValueAt(gradesTable.getSelectedRow(), 0));
+                callAction(2, false, (Integer) gradesTable.getValueAt(gradesTable.getSelectedRow(), 0));
             }
         });
     }

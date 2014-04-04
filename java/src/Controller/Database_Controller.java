@@ -22,16 +22,14 @@ public class Database_Controller {
             mainController.addModule(-1, "Maths", 2, 4);
             mainController.addModule(-1, "qsdqsd", 2, 5);
 
-            mainController.addGrade(-1, 90, 0.1, 0, 0, 0);
-            mainController.addGrade(-1, 23, 0.2, 0, 0, 0);
-            mainController.addGrade(-1, 56, 0.4, 0, 0, 0);
-            mainController.addGrade(-1, 77, 0.3, 0, 0, 0);
-
             mainController.addAlert(-1, 0, 0, 0, "coucoucocou");
 
-            mainController.addGrade(-1, 12, 0.1, 0, 0, 0);
+            mainController.addGrade(-1, 12, 0.1, 1, 6, 7);
+            mainController.addGrade(-1, 12, 0.1, 0, 5, 7);
+            mainController.addGrade(-1, 12, 0.1, 2, 6, 8);
+            mainController.addGrade(-1, 12, 0.1, 1, 6, 8);
 
-            //mainController.addAssistant(-1, 0, 0);
+            // mainController.addAssistant(-1, 0, 0);
             // mainController.addTutor(-1,0,0);
 
 
