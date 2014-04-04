@@ -44,7 +44,7 @@ public class Edit_Page {
         return mainPane;
     }
 
-    public void setOptions(int tab, String text) {
+    public void setOptions(int tab, String text, int id) {
         switch (tab) {
             case 0:
                 moduleButton.setText(text);
@@ -67,14 +67,34 @@ public class Edit_Page {
         if (text.equals("Add"))
             emptyFields(tab);
         else
-            fillFields(tab);
+            fillFields(tab, id);
     }
 
-    private void fillFields(int tab) {
+    private void fillFields(int tab, int id) {
         System.out.println("Fill fields for tab " + String.valueOf(tab));
     }
 
     private void emptyFields(int tab) {
         System.out.println("Empty fields for tab " + String.valueOf(tab));
+    }
+
+    private void fillModule(int id) {
+
+    }
+
+    private void fillStudent(int id) {
+
+    }
+
+    private void fillGrade(int id) {
+
+    }
+
+    private void fillAssistant(int id) {
+
+    }
+
+    private void fillTutor(int id) {
+
     }
 }

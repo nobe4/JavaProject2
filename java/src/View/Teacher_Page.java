@@ -77,7 +77,7 @@ public class Teacher_Page {
             public void mouseClicked(MouseEvent e) {
                 editFrame.setVisible(true);
                 edit_page.getMainPane().setSelectedIndex(0);
-                edit_page.setOptions(0, "Add");
+                edit_page.setOptions(0, "Add", -1);
             }
         });
         newStudentButton.addMouseListener(new MouseAdapter() {
@@ -85,7 +85,7 @@ public class Teacher_Page {
             public void mouseClicked(MouseEvent e) {
                 editFrame.setVisible(true);
                 edit_page.getMainPane().setSelectedIndex(1);
-                edit_page.setOptions(1, "Add");
+                edit_page.setOptions(1, "Add", -1);
             }
         });
         newGradeButton.addMouseListener(new MouseAdapter() {
@@ -93,27 +93,26 @@ public class Teacher_Page {
             public void mouseClicked(MouseEvent e) {
                 editFrame.setVisible(true);
                 edit_page.getMainPane().setSelectedIndex(2);
-                edit_page.setOptions(2, "Add");
+                edit_page.setOptions(2, "Add", -1);
             }
         });
         newAssistantButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 editFrame.setVisible(true);
-                edit_page.getMainPane().setSelectedIndex(0);
-                edit_page.setOptions(3, "Add");
+                edit_page.getMainPane().setSelectedIndex(3);
+                edit_page.setOptions(3, "Add", -1);
             }
         });
         newTutorButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 editFrame.setVisible(true);
-                edit_page.getMainPane().setSelectedIndex(0);
-                edit_page.setOptions(4, "Add");
+                edit_page.getMainPane().setSelectedIndex(4);
+                edit_page.setOptions(4, "Add", -1);
             }
         });
     }
-
 
     public void fillTables() {
         fillAlertsTable();

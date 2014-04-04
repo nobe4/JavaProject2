@@ -30,7 +30,7 @@ public class Database_Controller {
 
             mainController.addGrade(-1, 12, 0.1, 0, 0, 0);
 
-            mainController.addAssistant(-1, 0, 0);
+            //mainController.addAssistant(-1, 0, 0);
             // mainController.addTutor(-1,0,0);
 
 
