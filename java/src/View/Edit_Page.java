@@ -3,6 +3,7 @@ package View;
 import Controller.Custom_Exception;
 import Controller.Database_Controller;
 import Model.Module;
+import Model.Student;
 
 import javax.swing.*;
 
@@ -17,13 +18,20 @@ public class Edit_Page {
     private CustomJComboBox moduleTeacherChoice;
     private CustomJComboBox moduleYearChoice;
     private JButton moduleAddButton;
+    private JButton moduleDeleteButton;
+    private JButton moduleChangeButton;
+    private JButton moduleDiscardButton;
+
 
     private JTextField studentNameInput;
     private JTextField studentMailInput;
     private JTextField studentPasswordInput;
-    private JComboBox studentSpecialityChoice;
+    private CustomJComboBox studentSpecialityChoice;
     private JComboBox studentYearChoice;
     private JButton studentAddButton;
+    private JButton studentDiscardButton;
+    private JButton studentDeleteButton;
+    private JButton studentChangeButton;
 
     private JTextField gradeValueInput;
     private JTextField gradeCoefInput;
@@ -31,29 +39,23 @@ public class Edit_Page {
     private JComboBox gradeModuleChoice;
     private JComboBox gradeTypeChoice;
     private JButton gradeAddButton;
+    private JButton gradeDiscardButton;
+    private JButton gradeChangeButton;
+    private JButton gradeDeleteButton;
 
     private CustomJComboBox assistantStudentChoice;
     private CustomJComboBox assistantTeacherChoice;
     private JButton assistantAddButton;
+    private JButton assistantDiscardButton;
+    private JButton assistantChangeButton;
+    private JButton assistantDeleteButton;
 
     private CustomJComboBox tutorTeacherChoice;
     private CustomJComboBox tutorModuleChoice;
     private JButton tutorAddButton;
-    private JButton moduleDiscardButton;
-    private JButton studentDiscardButton;
-    private JButton assistantDiscardButton;
-    private JButton tutorDiscardButton;
-    private JButton gradeDiscardButton;
-    private JButton gradeChangeButton;
-    private JButton gradeDeleteButton;
-    private JButton moduleDeleteButton;
-    private JButton moduleChangeButton;
-    private JButton studentDeleteButton;
-    private JButton studentChangeButton;
-    private JButton assistantChangeButton;
-    private JButton assistantDeleteButton;
     private JButton tutorDeleteButton;
     private JButton tutorChangeButton;
+    private JButton tutorDiscardButton;
 
     private Database_Controller databaseController;
 
@@ -145,10 +147,6 @@ public class Edit_Page {
         }
     }
 
-    private void fillFields(int tab, int id) {
-        System.out.println("Fill fields for tab " + String.valueOf(tab));
-    }
-
     private void emptyFields(int tab) {
         System.out.println("Empty fields for tab " + String.valueOf(tab));
     }
@@ -165,7 +163,16 @@ public class Edit_Page {
     }
 
     private void fillStudent(int id) {
-
+        try {
+            Student s = this.databaseController.getMainController().getStudent(id);
+            studentNameInput.setText((String) s.get("name"));
+            studentMailInput.setText((String) s.get("email"));
+            studentPasswordInput.setText((String) s.get("password"));
+            studentYearChoice.setSelectedIndex((Integer) s.get("year") - 1);
+            studentSpecialityChoice.populate(this.databaseController.getMainController().getModules().exportDatas(new String[]{"id", "name"}), (Integer) s.get("speciality"));
+        } catch (Custom_Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private void fillGrade(int id) {

@@ -97,7 +97,7 @@
                 <properties/>
                 <border type="none"/>
                 <children>
-                  <component id="1622c" class="javax.swing.JTable" binding="studentsTable">
+                  <component id="1622c" class="javax.swing.JTable" binding="studentsTable" custom-create="true">
                     <constraints/>
                     <properties/>
                   </component>

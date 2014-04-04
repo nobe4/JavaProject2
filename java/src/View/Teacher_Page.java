@@ -182,5 +182,14 @@ public class Teacher_Page {
                 callAction(0, false, (Integer) modulesTable.getValueAt(modulesTable.getSelectedRow(), 0));
             }
         });
+
+        studentsTable = new JTable();
+        studentsTable.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                System.out.println(studentsTable.getValueAt(studentsTable.getSelectedRow(), 0));
+                callAction(1, false, (Integer) studentsTable.getValueAt(studentsTable.getSelectedRow(), 0));
+            }
+        });
     }
 }
