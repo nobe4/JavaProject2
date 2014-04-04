@@ -12,29 +12,44 @@ public class Edit_Page {
     private JTextField moduleNameInput;
     private JComboBox moduleTeacherChoice;
     private JComboBox moduleYearChoice;
-    private JButton moduleButton;
+    private JButton moduleAddButton;
 
     private JTextField studentNameInput;
     private JTextField studentMailInput;
     private JTextField studentPasswordInput;
     private JComboBox studentSpecialityChoice;
     private JComboBox studentYearChoice;
-    private JButton studentButton;
+    private JButton studentAddButton;
 
     private JTextField gradeValueInput;
     private JTextField gradeCoefInput;
     private JComboBox gradeStudentChoice;
     private JComboBox gradeModuleChoice;
     private JComboBox gradeTypeChoice;
-    private JButton gradeButton;
+    private JButton gradeAddButton;
 
     private JComboBox assistantStudentChoice;
     private JComboBox assistantTeacherChoice;
-    private JButton assistantButton;
+    private JButton assistantAddButton;
 
     private JComboBox tutorTeacherChoice;
     private JComboBox tutorModuleChoice;
-    private JButton tutorButton;
+    private JButton tutorAddButton;
+    private JButton moduleDiscardButton;
+    private JButton studentDiscardButton;
+    private JButton assistantDiscardButton;
+    private JButton tutorDiscardButton;
+    private JButton gradeDiscardButton;
+    private JButton gradeChangeButton;
+    private JButton gradeDeleteButton;
+    private JButton moduleDeleteButton;
+    private JButton moduleChangeButton;
+    private JButton studentDeleteButton;
+    private JButton studentChangeButton;
+    private JButton assistantChangeButton;
+    private JButton assistantDeleteButton;
+    private JButton tutorDeleteButton;
+    private JButton tutorChangeButton;
 
     public JPanel getMainPanel() {
         return mainPanel;
@@ -44,30 +59,47 @@ public class Edit_Page {
         return mainPane;
     }
 
-    public void setOptions(int tab, String text, int id) {
-        switch (tab) {
-            case 0:
-                moduleButton.setText(text);
-                break;
-            case 1:
-                studentButton.setText(text);
-                break;
-            case 2:
-                gradeButton.setText(text);
-                break;
-            case 3:
-                assistantButton.setText(text);
-                break;
-            case 4:
-                tutorButton.setText(text);
-                break;
-
+    public void setOptions(int tab, String text1, String text2, int id) {
+        if (text1.equals("Add")) {
+            emptyFields(tab);
+            switch (tab) {
+                case 0:
+                    moduleAddButton.setVisible(true);
+                    moduleDiscardButton.setVisible(true);
+                    moduleChangeButton.setVisible(false);
+                    moduleDeleteButton.setVisible(false);
+                    break;
+                case 1:
+                    studentAddButton.setVisible(true);
+                    studentDiscardButton.setVisible(true);
+                    studentChangeButton.setVisible(false);
+                    studentDeleteButton.setVisible(false);
+                    break;
+                case 2:
+                    gradeAddButton.setVisible(true);
+                    gradeDiscardButton.setVisible(true);
+                    gradeChangeButton.setVisible(false);
+                    gradeDeleteButton.setVisible(false);
+                    break;
+                case 3:
+                    assistantAddButton.setVisible(true);
+                    assistantDiscardButton.setVisible(true);
+                    assistantChangeButton.setVisible(false);
+                    assistantDeleteButton.setVisible(false);
+                    break;
+                case 4:
+                    tutorAddButton.setVisible(true);
+                    tutorDiscardButton.setVisible(true);
+                    tutorChangeButton.setVisible(false);
+                    tutorDeleteButton.setVisible(false);
+                    break;
+            }
         }
 
-        if (text.equals("Add"))
-            emptyFields(tab);
         else
             fillFields(tab, id);
+
+
     }
 
     private void fillFields(int tab, int id) {

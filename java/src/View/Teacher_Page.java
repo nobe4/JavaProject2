@@ -77,7 +77,7 @@ public class Teacher_Page {
             public void mouseClicked(MouseEvent e) {
                 editFrame.setVisible(true);
                 edit_page.getMainPane().setSelectedIndex(0);
-                edit_page.setOptions(0, "Add", -1);
+                edit_page.setOptions(0, "Add", "Discard", -1);
             }
         });
         newStudentButton.addMouseListener(new MouseAdapter() {
@@ -85,7 +85,7 @@ public class Teacher_Page {
             public void mouseClicked(MouseEvent e) {
                 editFrame.setVisible(true);
                 edit_page.getMainPane().setSelectedIndex(1);
-                edit_page.setOptions(1, "Add", -1);
+                edit_page.setOptions(1, "Add", "Discard", -1);
             }
         });
         newGradeButton.addMouseListener(new MouseAdapter() {
@@ -93,7 +93,7 @@ public class Teacher_Page {
             public void mouseClicked(MouseEvent e) {
                 editFrame.setVisible(true);
                 edit_page.getMainPane().setSelectedIndex(2);
-                edit_page.setOptions(2, "Add", -1);
+                edit_page.setOptions(2, "Add", "Discard", -1);
             }
         });
         newAssistantButton.addMouseListener(new MouseAdapter() {
@@ -101,7 +101,7 @@ public class Teacher_Page {
             public void mouseClicked(MouseEvent e) {
                 editFrame.setVisible(true);
                 edit_page.getMainPane().setSelectedIndex(3);
-                edit_page.setOptions(3, "Add", -1);
+                edit_page.setOptions(3, "Add", "Discard", -1);
             }
         });
         newTutorButton.addMouseListener(new MouseAdapter() {
@@ -109,7 +109,7 @@ public class Teacher_Page {
             public void mouseClicked(MouseEvent e) {
                 editFrame.setVisible(true);
                 edit_page.getMainPane().setSelectedIndex(4);
-                edit_page.setOptions(4, "Add", -1);
+                edit_page.setOptions(4, "Add", "Discard", -1);
             }
         });
     }
