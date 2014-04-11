@@ -88,22 +88,28 @@ public class Teacher_Page {
                 callAction(1, true, -1);
             }
         });
-        newGradeButton.addMouseListener(new MouseAdapter() {
+        newTeacherButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 callAction(2, true, -1);
             }
         });
-        newAssistantButton.addMouseListener(new MouseAdapter() {
+        newGradeButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 callAction(3, true, -1);
             }
         });
-        newTutorButton.addMouseListener(new MouseAdapter() {
+        newAssistantButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 callAction(4, true, -1);
+            }
+        });
+        newTutorButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                callAction(5, true, -1);
             }
         });
     }
@@ -192,13 +198,34 @@ public class Teacher_Page {
             }
         });
 
+        teachersTable = new JTable();
+        teachersTable.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                System.out.println(teachersTable.getValueAt(teachersTable.getSelectedRow(), 0));
+                callAction(2, false, (Integer) teachersTable.getValueAt(teachersTable.getSelectedRow(), 0));
+            }
+        });
+
+
         gradesTable = new JTable();
         gradesTable.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 System.out.println(gradesTable.getValueAt(gradesTable.getSelectedRow(), 0));
-                callAction(2, false, (Integer) gradesTable.getValueAt(gradesTable.getSelectedRow(), 0));
+                callAction(3, false, (Integer) gradesTable.getValueAt(gradesTable.getSelectedRow(), 0));
             }
         });
+
+        assistantsTable = new JTable();
+        assistantsTable.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                System.out.println(assistantsTable.getValueAt(assistantsTable.getSelectedRow(), 0));
+                callAction(4, false, (Integer) assistantsTable.getValueAt(assistantsTable.getSelectedRow(), 0));
+            }
+        });
+
+
     }
 }

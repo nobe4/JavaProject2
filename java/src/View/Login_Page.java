@@ -11,5 +11,7 @@ public class Login_Page {
     private JButton loginButton;
     private JPanel mainPanel;
 
-    public JPanel getMainPanel() {return mainPanel;}
+    public JPanel getMainPanel() {
+        return mainPanel;
+    }
 }

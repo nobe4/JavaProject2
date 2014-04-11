@@ -1,10 +1,10 @@
 package Model;
 
 
-public class Student extends Person{
+public class Student extends Person {
     public Student() {
-        super("name","email","password","type","speciality","is_assistant","year");
-        this.set("type",PERSON_TYPE.STUDENT);
+        super("name", "email", "password", "type", "speciality", "is_assistant", "year");
+        this.set("type", PERSON_TYPE.STUDENT);
     }
 
     public Student(String name, String email, String password, int speciality, boolean isAssistant, int year) {

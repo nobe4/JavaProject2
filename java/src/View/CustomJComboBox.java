@@ -15,7 +15,8 @@ public class CustomJComboBox extends JComboBox {
         for (int i = 0; i < this.fields.length; i++) {
             this.addItem(this.fields[i][1]);
         }
-        this.setSelectedIndex(this.findIdIndex(id));
+        if (-1 == this.findIdIndex(id)) this.setSelectedIndex(0);
+        else this.setSelectedIndex(this.findIdIndex(id));
     }
 
     public int findIdIndex(int id) {

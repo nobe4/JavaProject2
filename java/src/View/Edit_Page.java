@@ -2,11 +2,13 @@ package View;
 
 import Controller.Custom_Exception;
 import Controller.Database_Controller;
-import Model.Grade;
-import Model.Module;
-import Model.Student;
+import Model.*;
 
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * Created by padawan on 4/2/14.
@@ -44,24 +46,81 @@ public class Edit_Page {
     private JButton gradeDeleteButton;
 
     private CustomJComboBox assistantStudentChoice;
-    private CustomJComboBox assistantTeacherChoice;
+    private CustomJComboBox assistantModuleChoice;
     private JButton assistantAddButton;
     private JButton assistantDiscardButton;
     private JButton assistantChangeButton;
     private JButton assistantDeleteButton;
 
     private CustomJComboBox tutorTeacherChoice;
-    private CustomJComboBox tutorModuleChoice;
+    private CustomJComboBox tutorStudentChoice;
     private JButton tutorAddButton;
     private JButton tutorDeleteButton;
     private JButton tutorChangeButton;
     private JButton tutorDiscardButton;
     private CustomJComboBox gradeTeacherChoice;
+    private JTextField teacherNameInput;
+    private JTextField teacherEmaiInput;
+    private JTextField teacherPasswordInput;
+    private CustomJComboBox teacherSpecialityChoice;
+    private JButton teacherDiscardButton;
+    private JButton teacherDeleteButton;
+    private JButton teacherChangeButton;
+    private JButton teacherAddButton;
 
     private Database_Controller databaseController;
 
     public Edit_Page(Database_Controller databaseController) {
         this.databaseController = databaseController;
+        this.setListeners();
+
+    }
+
+    private void setListeners() {
+        this.mainPane.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent changeEvent) {
+                updateChoices(((JTabbedPane) changeEvent.getSource()).
+                        getSelectedIndex());
+            }
+        });
+
+        this.moduleDiscardButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                emptyFields(0);
+            }
+        });
+        this.studentDiscardButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                emptyFields(1);
+            }
+        });
+        this.teacherDiscardButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                emptyFields(2);
+            }
+        });
+        this.gradeDiscardButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                emptyFields(3);
+            }
+        });
+        this.assistantDiscardButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                emptyFields(4);
+            }
+        });
+        this.tutorDiscardButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                emptyFields(5);
+            }
+        });
     }
 
     public JPanel getMainPanel() {
@@ -75,73 +134,24 @@ public class Edit_Page {
     public void setAction(int tab, boolean add, int id) {
         if (add) {
             emptyFields(tab);
-            switch (tab) {
-                case 0:
-                    moduleAddButton.setVisible(true);
-                    moduleDiscardButton.setVisible(true);
-                    moduleChangeButton.setVisible(false);
-                    moduleDeleteButton.setVisible(false);
-                    break;
-                case 1:
-                    studentAddButton.setVisible(true);
-                    studentDiscardButton.setVisible(true);
-                    studentChangeButton.setVisible(false);
-                    studentDeleteButton.setVisible(false);
-                    break;
-                case 2:
-                    gradeAddButton.setVisible(true);
-                    gradeDiscardButton.setVisible(true);
-                    gradeChangeButton.setVisible(false);
-                    gradeDeleteButton.setVisible(false);
-                    break;
-                case 3:
-                    assistantAddButton.setVisible(true);
-                    assistantDiscardButton.setVisible(true);
-                    assistantChangeButton.setVisible(false);
-                    assistantDeleteButton.setVisible(false);
-                    break;
-                case 4:
-                    tutorAddButton.setVisible(true);
-                    tutorDiscardButton.setVisible(true);
-                    tutorChangeButton.setVisible(false);
-                    tutorDeleteButton.setVisible(false);
-                    break;
-            }
         } else {
             switch (tab) {
                 case 0:
-                    moduleAddButton.setVisible(false);
-                    moduleDiscardButton.setVisible(false);
-                    moduleChangeButton.setVisible(true);
-                    moduleDeleteButton.setVisible(true);
                     fillModule(id);
                     break;
                 case 1:
-                    studentAddButton.setVisible(false);
-                    studentDiscardButton.setVisible(false);
-                    studentChangeButton.setVisible(true);
-                    studentDeleteButton.setVisible(true);
                     fillStudent(id);
                     break;
                 case 2:
-                    gradeAddButton.setVisible(false);
-                    gradeDiscardButton.setVisible(false);
-                    gradeChangeButton.setVisible(true);
-                    gradeDeleteButton.setVisible(true);
-                    fillGrade(id);
+                    fillTeacher(id);
                     break;
                 case 3:
-                    assistantAddButton.setVisible(false);
-                    assistantDiscardButton.setVisible(false);
-                    assistantChangeButton.setVisible(true);
-                    assistantDeleteButton.setVisible(true);
-                    fillAssistant(id);
+                    fillGrade(id);
                     break;
                 case 4:
-                    tutorAddButton.setVisible(false);
-                    tutorDiscardButton.setVisible(false);
-                    tutorChangeButton.setVisible(true);
-                    tutorDeleteButton.setVisible(true);
+                    fillAssistant(id);
+                    break;
+                case 5:
                     fillTutor(id);
                     break;
             }
@@ -149,7 +159,68 @@ public class Edit_Page {
     }
 
     private void emptyFields(int tab) {
-        System.out.println("Empty fields for tab " + String.valueOf(tab));
+        switch (tab) {
+            case 0:
+                moduleNameInput.setText("");
+                moduleTeacherChoice.populate(this.databaseController.getMainController().getTeachers().exportDatas(new String[]{"id", "name"}), 0);
+                moduleYearChoice.setSelectedIndex(0);
+                break;
+            case 1:
+                studentNameInput.setText("");
+                studentMailInput.setText("");
+                studentPasswordInput.setText("");
+                studentYearChoice.setSelectedIndex(0);
+                studentSpecialityChoice.populate(this.databaseController.getMainController().getModules().exportDatas(new String[]{"id", "name"}), 0);
+                break;
+            case 2:
+                teacherNameInput.setText("");
+                teacherEmaiInput.setText("");
+                teacherPasswordInput.setText("");
+                teacherSpecialityChoice.populate(this.databaseController.getMainController().getModules().exportDatas(new String[]{"id", "name"}), 0);
+                break;
+            case 3:
+                gradeCoefInput.setText("");
+                gradeValueInput.setText("");
+                gradeModuleChoice.populate(this.databaseController.getMainController().getModules().exportDatas(new String[]{"id", "name"}), 0);
+                gradeTeacherChoice.populate(this.databaseController.getMainController().getTeachers().exportDatas(new String[]{"id", "name"}), 0);
+                gradeStudentChoice.populate(this.databaseController.getMainController().getStudents().exportDatas(new String[]{"id", "name"}), 0);
+                break;
+            case 4:
+                assistantModuleChoice.populate(this.databaseController.getMainController().getModules().exportDatas(new String[]{"id", "name"}), 0);
+                assistantStudentChoice.populate(this.databaseController.getMainController().getStudents().exportDatas(new String[]{"id", "name"}), 0);
+                break;
+            case 5:
+                tutorStudentChoice.populate(this.databaseController.getMainController().getStudents().exportDatas(new String[]{"id", "name"}), 0);
+                tutorTeacherChoice.populate(this.databaseController.getMainController().getTeachers().exportDatas(new String[]{"id", "name"}), 0);
+                break;
+        }
+    }
+
+    private void updateChoices(int tab) {
+        switch (tab) {
+            case 0:
+                moduleTeacherChoice.populate(this.databaseController.getMainController().getTeachers().exportDatas(new String[]{"id", "name"}), 0);
+                break;
+            case 1:
+                studentSpecialityChoice.populate(this.databaseController.getMainController().getModules().exportDatas(new String[]{"id", "name"}), 0);
+                break;
+            case 2:
+                teacherSpecialityChoice.populate(this.databaseController.getMainController().getModules().exportDatas(new String[]{"id", "name"}), 0);
+                break;
+            case 3:
+                gradeModuleChoice.populate(this.databaseController.getMainController().getModules().exportDatas(new String[]{"id", "name"}), 0);
+                gradeTeacherChoice.populate(this.databaseController.getMainController().getTeachers().exportDatas(new String[]{"id", "name"}), 0);
+                gradeStudentChoice.populate(this.databaseController.getMainController().getStudents().exportDatas(new String[]{"id", "name"}), 0);
+                break;
+            case 4:
+                assistantModuleChoice.populate(this.databaseController.getMainController().getModules().exportDatas(new String[]{"id", "name"}), 0);
+                assistantStudentChoice.populate(this.databaseController.getMainController().getStudents().exportDatas(new String[]{"id", "name"}), 0);
+                break;
+            case 5:
+                tutorStudentChoice.populate(this.databaseController.getMainController().getStudents().exportDatas(new String[]{"id", "name"}), 0);
+                tutorTeacherChoice.populate(this.databaseController.getMainController().getTeachers().exportDatas(new String[]{"id", "name"}), 0);
+                break;
+        }
     }
 
     private void fillModule(int id) {
@@ -176,6 +247,18 @@ public class Edit_Page {
         }
     }
 
+    private void fillTeacher(int id) {
+        try {
+            Teacher t = this.databaseController.getMainController().getTeacher(id);
+            teacherNameInput.setText((String) t.get("name"));
+            teacherEmaiInput.setText((String) t.get("email"));
+            teacherPasswordInput.setText((String) t.get("password"));
+            teacherSpecialityChoice.populate(this.databaseController.getMainController().getModules().exportDatas(new String[]{"id", "name"}), (Integer) t.get("speciality"));
+        } catch (Custom_Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     private void fillGrade(int id) {
         try {
             Grade g = this.databaseController.getMainController().getGrade(id);
@@ -196,14 +279,33 @@ public class Edit_Page {
     }
 
     private void fillAssistant(int id) {
-
+        try {
+            Assistant a = this.databaseController.getMainController().getAssistant(id);
+            assistantStudentChoice.populate(
+                    this.databaseController.getMainController().getStudents().exportDatas(new String[]{"id", "name"})
+                    , (Integer) a.get("studentId"));
+            assistantModuleChoice.populate(
+                    this.databaseController.getMainController().getModules().exportDatas(new String[]{"id", "name"})
+                    , (Integer) a.get("moduleId"));
+        } catch (Custom_Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private void fillTutor(int id) {
-
+        try {
+            Tutor t = this.databaseController.getMainController().getTutor(id);
+            tutorTeacherChoice.populate(
+                    this.databaseController.getMainController().getTeachers().exportDatas(new String[]{"id", "name"})
+                    , (Integer) t.get("teacherId"));
+            tutorStudentChoice.populate(
+                    this.databaseController.getMainController().getStudents().exportDatas(new String[]{"id", "name"})
+                    , (Integer) t.get("studensId"));
+        } catch (Custom_Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private void createUIComponents() {
-        moduleTeacherChoice = new CustomJComboBox();
     }
 }
