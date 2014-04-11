@@ -195,16 +195,6 @@ public class Main_Controller {
         return a;
     }
 
-   /* Get/Add/Remove :
-            * module - DONE
-            * student - DONE
-            * grade - DONE
-            * teacher - DONE
-            * tutor - DONE
-            * assistant - DONE
-            * inscriptions - DONE
-            * alert
-    */
     // todo use the return of the remove method of Collection_Controller to return the object
 
 }

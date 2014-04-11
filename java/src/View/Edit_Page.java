@@ -19,10 +19,10 @@ public class Edit_Page {
 
     private JTextField moduleNameInput;
     private CustomJComboBox moduleTeacherChoice;
-    private CustomJComboBox moduleYearChoice;
-    private JButton moduleAddButton;
+    private JComboBox moduleYearChoice;
     private JButton moduleDeleteButton;
     private JButton moduleChangeButton;
+    private JButton moduleAddButton;
     private JButton moduleDiscardButton;
 
 
@@ -30,7 +30,7 @@ public class Edit_Page {
     private JTextField studentMailInput;
     private JTextField studentPasswordInput;
     private CustomJComboBox studentSpecialityChoice;
-    private CustomJComboBox studentYearChoice;
+    private JComboBox studentYearChoice;
     private JButton studentAddButton;
     private JButton studentDiscardButton;
     private JButton studentDeleteButton;
@@ -70,11 +70,11 @@ public class Edit_Page {
 
     private Database_Controller databaseController;
 
-    public Edit_Page(Database_Controller databaseController) {
+    public Edit_Page(final Database_Controller databaseController) {
         this.databaseController = databaseController;
         this.setListeners();
-
     }
+
 
     private void setListeners() {
         this.mainPane.addChangeListener(new ChangeListener() {
@@ -85,6 +85,12 @@ public class Edit_Page {
             }
         });
 
+        setDiscardListeners();
+        setAddListeners();
+    }
+
+
+    private void setDiscardListeners() {
         this.moduleDiscardButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
@@ -122,6 +128,77 @@ public class Edit_Page {
             }
         });
     }
+
+    private void setAddListeners() {
+        tutorAddButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                try {
+                    databaseController.getMainController().addTutor(-1, tutorStudentChoice.getSelectedId(), tutorTeacherChoice.getSelectedId());
+                } catch (Custom_Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        moduleAddButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                try {
+                    databaseController.getMainController().addModule(-1, moduleNameInput.getText(), moduleYearChoice.getSelectedIndex() + 1, moduleTeacherChoice.getSelectedId());
+                } catch (Custom_Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        studentAddButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                try {
+                    databaseController.getMainController().addStudent(-1, studentNameInput.getText(), studentMailInput.getText()
+                            , studentPasswordInput.getText(), studentSpecialityChoice.getSelectedId()
+                            , false, studentYearChoice.getSelectedIndex() + 1);
+                } catch (Custom_Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        teacherAddButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                try {
+                    databaseController.getMainController().addTeacher(-1, teacherNameInput.getText(), teacherEmaiInput.getText()
+                            , teacherPasswordInput.getText(), teacherSpecialityChoice.getSelectedId()
+                            , false);
+                } catch (Custom_Exception e) {
+                    e.printStackTrace();
+                }
+            }
+
+
+        });
+        gradeAddButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                try {
+                    databaseController.getMainController().addGrade(-1, Double.valueOf(gradeValueInput.getText()), Double.valueOf(gradeCoefInput.getText()), gradeStudentChoice.getSelectedId(), gradeTeacherChoice.getSelectedId(), gradeModuleChoice.getSelectedId());
+                } catch (Custom_Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        assistantAddButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                try {
+                    databaseController.getMainController().addAssistant(-1, assistantStudentChoice.getSelectedId(), assistantModuleChoice.getSelectedId());
+                } catch (Custom_Exception e) {
+                    e.printStackTrace();
+                }
+            }
+
+        });
+    }
+
 
     public JPanel getMainPanel() {
         return mainPanel;

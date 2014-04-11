@@ -6,21 +6,14 @@ import Controller.Main_Controller;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
+import java.awt.event.*;
 
 public class Teacher_Page {
 
 
     private enum TAB {MODULE, STUDENT, GRADE, ASSISTANT, TUTOR}
 
-    ;
-
     private enum ACTION {ADD, SET, DELETE}
-
-    ;
 
     private JTabbedPane tabbedPane1;
 
@@ -45,6 +38,7 @@ public class Teacher_Page {
     private JButton newGradeButton;
     private JTable teachersTable;
     private JButton newTeacherButton;
+    private JButton refreshButton;
 
     private JFrame editFrame;
     private Edit_Page edit_page;
@@ -73,6 +67,7 @@ public class Teacher_Page {
         editFrame.setContentPane(edit_page.getMainPanel());
 
         this.addListener();
+
     }
 
     public void addListener() {
@@ -110,6 +105,12 @@ public class Teacher_Page {
             @Override
             public void mouseClicked(MouseEvent e) {
                 callAction(5, true, -1);
+            }
+        });
+        refreshButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                fillTables();
             }
         });
     }

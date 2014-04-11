@@ -31,7 +31,7 @@ public class Database_Controller {
 
             mainController.addAssistant(-1, 1, 5);
             mainController.addAssistant(-1, 2, 6);
-            // mainController.addTutor(-1,0,0);
+            //mainController.addTutor(-1,0,0);
 
 
         } catch (Custom_Exception e) {
