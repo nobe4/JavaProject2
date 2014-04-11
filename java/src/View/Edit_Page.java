@@ -70,9 +70,12 @@ public class Edit_Page {
 
     private Database_Controller databaseController;
 
+    private int currentId = -1;
+
     public Edit_Page(final Database_Controller databaseController) {
         this.databaseController = databaseController;
         this.setListeners();
+
     }
 
 
@@ -80,13 +83,79 @@ public class Edit_Page {
         this.mainPane.addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent changeEvent) {
+                currentId = -1;
                 updateChoices(((JTabbedPane) changeEvent.getSource()).
                         getSelectedIndex());
             }
         });
 
         setDiscardListeners();
+        setDeleteListeners();
         setAddListeners();
+    }
+
+
+    private void setDeleteListeners() {
+        moduleDeleteButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                try {
+                    databaseController.getMainController().removeModule(currentId);
+                } catch (Custom_Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        studentDeleteButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                try {
+                    databaseController.getMainController().removeStudent(currentId);
+                } catch (Custom_Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        teacherDeleteButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                try {
+                    databaseController.getMainController().removeTeacher(currentId);
+                } catch (Custom_Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        gradeDeleteButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                try {
+                    databaseController.getMainController().removeGrade(currentId);
+                } catch (Custom_Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        assistantDeleteButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                try {
+                    databaseController.getMainController().removeAssistant(currentId);
+                } catch (Custom_Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        tutorDeleteButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                try {
+                    databaseController.getMainController().removeTutor(currentId);
+                } catch (Custom_Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 
 
@@ -199,7 +268,6 @@ public class Edit_Page {
         });
     }
 
-
     public JPanel getMainPanel() {
         return mainPanel;
     }
@@ -212,6 +280,7 @@ public class Edit_Page {
         if (add) {
             emptyFields(tab);
         } else {
+            currentId = id;
             switch (tab) {
                 case 0:
                     fillModule(id);
@@ -381,8 +450,5 @@ public class Edit_Page {
         } catch (Custom_Exception e) {
             e.printStackTrace();
         }
-    }
-
-    private void createUIComponents() {
     }
 }
