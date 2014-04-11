@@ -76,6 +76,7 @@ public class Edit_Page {
         this.databaseController = databaseController;
         this.setListeners();
 
+
     }
 
 
@@ -92,8 +93,92 @@ public class Edit_Page {
         setDiscardListeners();
         setDeleteListeners();
         setAddListeners();
+        setEditListeners();
+
     }
 
+
+    private void setEditListeners() {
+        moduleChangeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                try {
+                    databaseController.getMainController().setModule(currentId, moduleNameInput.getText(), moduleYearChoice.getSelectedIndex() + 1, moduleTeacherChoice.getSelectedId());
+                } catch (Custom_Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        tutorChangeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                try {
+                    databaseController.getMainController().setTutor(currentId, tutorStudentChoice.getSelectedId(), tutorTeacherChoice.getSelectedId());
+                } catch (Custom_Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        moduleChangeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                try {
+                    databaseController.getMainController().setModule(currentId, moduleNameInput.getText(), moduleYearChoice.getSelectedIndex() + 1, moduleTeacherChoice.getSelectedId());
+                } catch (Custom_Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        studentChangeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                try {
+                    databaseController.getMainController().setStudent(currentId, studentNameInput.getText(), studentMailInput.getText()
+                            , studentPasswordInput.getText(), studentSpecialityChoice.getSelectedId()
+                            , false, studentYearChoice.getSelectedIndex() + 1);
+                } catch (Custom_Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        teacherChangeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                try {
+                    databaseController.getMainController().setTeacher(currentId, teacherNameInput.getText(), teacherEmaiInput.getText()
+                            , teacherPasswordInput.getText(), teacherSpecialityChoice.getSelectedId()
+                            , false);
+                } catch (Custom_Exception e) {
+                    e.printStackTrace();
+                }
+            }
+
+
+        });
+        gradeChangeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                try {
+                    databaseController.getMainController().setGrade(currentId, Double.valueOf(gradeValueInput.getText()), Double.valueOf(gradeCoefInput.getText()), gradeStudentChoice.getSelectedId(), gradeTeacherChoice.getSelectedId(), gradeModuleChoice.getSelectedId());
+                } catch (Custom_Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        assistantChangeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                try {
+                    databaseController.getMainController().addAssistant(currentId, assistantStudentChoice.getSelectedId(), assistantModuleChoice.getSelectedId());
+                } catch (Custom_Exception e) {
+                    e.printStackTrace();
+                }
+            }
+
+        });
+
+    }
 
     private void setDeleteListeners() {
         moduleDeleteButton.addActionListener(new ActionListener() {
@@ -157,7 +242,6 @@ public class Edit_Page {
             }
         });
     }
-
 
     private void setDiscardListeners() {
         this.moduleDiscardButton.addActionListener(new ActionListener() {

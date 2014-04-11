@@ -195,6 +195,35 @@ public class Main_Controller {
         return a;
     }
 
-    // todo use the return of the remove method of Collection_Controller to return the object
+    public Module setModule(int id, String name, int year, int teacherId) throws Custom_Exception {
+        modules.remove(id);
+        return addModule(id, name, year, teacherId);
+    }
+
+    public Student setStudent(int id, String name, String email, String password, int speciality, boolean is_assistant, int year) throws Custom_Exception {
+        students.remove(id);
+        return addStudent(id, name, email, password, speciality, is_assistant, year);
+    }
+
+    public Teacher setTeacher(int id, String name, String email, String password, int speciality, boolean is_tutor) throws Custom_Exception {
+        teachers.remove(id);
+        return addTeacher(id, name, email, password, speciality, is_tutor);
+    }
+
+    public Grade setGrade(int id, double value, double coef, int studentId, int teacherId, int moduleId) throws Custom_Exception {
+        grades.remove(id);
+        return addGrade(id, value, coef, studentId, teacherId, moduleId);
+    }
+
+    public Assistant setAssistant(int id, int studentId, int moduleId) throws Custom_Exception {
+        assistants.remove(id);
+        return addAssistant(id, studentId, moduleId);
+    }
+
+    public Tutor setTutor(int id, int studentId, int teacherId) throws Custom_Exception {
+        tutors.remove(id);
+        return addTutor(id, studentId, teacherId);
+    }
+
 
 }
