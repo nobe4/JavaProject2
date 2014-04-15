@@ -51,16 +51,25 @@ public class Collection_Controller {
         return o;
     }
 
-    // multiple set definition
-    public <Custom_Type> JSObject set(int id, String key, Custom_Type value) throws Custom_Exception {
-        JSObject o = this.get(id);
-        o.set(key, value);
-        return o;
+    public JSObject get(String field, String value) {
+        for (Map.Entry<Integer, JSObject> entry : params.entrySet()) {
+            JSObject o = entry.getValue();
+            if (entry.getValue().get(field).toString().equals(value)) {
+                return entry.getValue();
+            }
+        }
+        return null;
     }
 
     public String[] exportFields() {
         if (!params.entrySet().iterator().hasNext()) return new String[]{"Empty", "Set"};
         return params.entrySet().iterator().next().getValue().getFieldsName().toArray(new String[]{});
+    }
+
+    public <Custom_Type> JSObject set(int id, String key, Custom_Type value) throws Custom_Exception {
+        JSObject o = this.get(id);
+        o.set(key, value);
+        return o;
     }
 
     public Object[][] exportDatas() {
@@ -94,4 +103,6 @@ public class Collection_Controller {
     public Object[][] exportDatas(String[] askedField) {
         return this.exportDatas(new ArrayList<String>(Arrays.asList(askedField)));
     }
+
+
 }

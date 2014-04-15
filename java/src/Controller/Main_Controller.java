@@ -55,7 +55,7 @@ public class Main_Controller {
     }
 
     public Student addStudent(int id, String name, String email, String password, int speciality, boolean is_assistant, int year) throws Custom_Exception {
-        Student s = new Student(name, email, password, speciality, is_assistant, year); // TODO set ID generation
+        Student s = new Student(name, email, password, speciality, is_assistant, year);
         students.add(id, s);
         return s;
     }

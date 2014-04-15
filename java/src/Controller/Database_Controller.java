@@ -14,6 +14,7 @@ public class Database_Controller {
             mainController.addStudent(-1, "Boris", "bo@bert", "bobo", 7, false, 1);
             mainController.addStudent(-1, "Michel", "mi@bert", "michou", 8, true, 2);
             mainController.addStudent(-1, "Maxou", "ma@bert", "maxmax", 8, false, 3);
+            mainController.addStudent(-1, "A", "ma@bert", "A", 8, false, 3);
 
             mainController.addTeacher(-1, "Prof chen", "chen@bert", "maxmax", 7, false);
             mainController.addTeacher(-1, "Prof org", "sd@bert", "qsdqsd", 7, true);

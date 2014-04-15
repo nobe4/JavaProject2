@@ -79,7 +79,6 @@ public class Edit_Page {
 
     }
 
-
     private void setListeners() {
         this.mainPane.addChangeListener(new ChangeListener() {
             @Override
@@ -96,7 +95,6 @@ public class Edit_Page {
         setEditListeners();
 
     }
-
 
     private void setEditListeners() {
         moduleChangeButton.addActionListener(new ActionListener() {

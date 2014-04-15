@@ -10,7 +10,6 @@ import java.util.Map;
 public class JSObject {
     private HashMap<String, Object> datas = new HashMap<String, Object>();
 
-
     public JSObject(String... fields) {
         for (int i = 0; i < fields.length; i++) {
             datas.put(fields[i], null);
@@ -29,7 +28,7 @@ public class JSObject {
     }
 
     public Object get(String field) {
-        return datas.get(field);
+        return datas.get(field.toString());
     }
 
     public void set(String field, Object value) {
@@ -64,5 +63,14 @@ public class JSObject {
             }
         }
         return values;
+    }
+
+    @Override
+    public String toString() {
+        String ret = "{";
+        for (Map.Entry<String, Object> entry : datas.entrySet()) {
+            ret += "'" + entry.getKey() + "':'" + String.valueOf(entry.getValue()) + "', ";
+        }
+        return ret + "}";
     }
 }
